@@ -115,7 +115,7 @@
   .hero-meta strong{color:#fff}
 
   /* Category tiles */
-  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
   .tile{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--surface);padding:0;text-align:left}
   .tile img{width:100%;height:118px;object-fit:cover}
   .tile span{display:flex;justify-content:space-between;align-items:center;padding:.65rem .85rem;font-weight:700;font-size:.95rem;color:var(--ink)}
@@ -384,10 +384,21 @@
   @keyframes slideIn{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:translateX(0)}}
   .slide-txt{padding:2.4rem 2.1rem 4.4rem;display:flex;flex-direction:column;justify-content:center;gap:.8rem}
   .slide-txt .tag{align-self:flex-start;background:var(--accent);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.34rem .78rem;border-radius:999px}
-  .slide-txt h1,.slide-txt h2{margin:0;font-size:clamp(1.85rem,4.2vw,2.85rem);line-height:1.08}
+  .slide-txt h1,.slide-txt h2{margin:0;font-size:clamp(2.1rem,4.6vw,3.25rem);line-height:1.06}
   .slide-txt p{margin:0;color:#cfeadd;max-width:50ch}
   .slide-img{min-height:250px}
   .slide-img img{width:100%;height:100%;object-fit:cover}
+  .hero-eyebrow{display:inline-block;align-self:flex-start;background:var(--accent);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.34rem .78rem;border-radius:999px}
+  .hero-card{background:#fff;color:#16211d;border-radius:18px;padding:1.35rem 1.45rem;margin:1.6rem 1.6rem 1.6rem 0;align-self:center;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+  .hero-card-label{margin:0 0 .7rem;font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#5f726a}
+  .hero-prices{list-style:none;margin:0 0 .7rem;padding:0;display:grid;gap:.55rem}
+  .hero-prices li{display:flex;align-items:center;gap:.6rem;font-size:.95rem}
+  .hero-prices li span{flex:1;font-weight:600}
+  .hero-prices li strong{font-size:1.18rem}
+  .hero-prices .best{background:#16a34a;color:#fff;font-style:normal;font-size:.68rem;font-weight:800;padding:.2rem .55rem;border-radius:999px}
+  .hero-card-save{margin:0 0 .6rem;font-size:.85rem;color:#5f726a}
+  .hero-card-link{font-weight:700;text-decoration:none}
+  @media (max-width:760px){.hero-card{margin:0 1.4rem 3.8rem}}
   .slider-ui{position:absolute;left:2.1rem;bottom:1.15rem;display:flex;align-items:center;gap:.85rem;z-index:3}
   .dots{display:flex;gap:.42rem}
   .dot{width:9px;height:9px;border-radius:999px;border:0;background:rgba(255,255,255,.45);padding:0;transition:width .3s,background .3s}
@@ -1773,7 +1784,7 @@
     <button class="chip on" data-cat="all" type="button">All</button>
     <button class="chip" data-cat="Electronics" type="button">Electronics</button>
     <button class="chip" data-cat="Fashion" type="button">Fashion</button>
-    <button class="chip" data-cat="Grocery" type="button">Grocery</button>
+    
     <button class="chip" data-cat="Home" type="button">Home &amp; Kitchen</button>
     <button class="chip" data-cat="Deals" type="button">Today's Deals</button>
     <button class="chip" data-goto-stores type="button">Stores ↓</button>
@@ -1788,13 +1799,24 @@
     <div class="slides" id="slidesTrack">
       <article class="slide active">
         <div class="slide-txt">
-          <h1>Same product. One best price.</h1>
-          <p>Compare it across the stores we track, side by side.</p>
+          <span class="hero-eyebrow">Price comparison · India</span>
+          <h1>One product. Six prices. One winner.</h1>
+          <p>Amazon, Flipkart, Meesho, Ajio, Myntra, Croma — side by side. Lowest wins.</p>
           <div class="hero-cta">
             <a class="btn btn-accent" href="#products">Compare prices</a>
+            <a class="btn btn-ghost" href="#/deals">Today's Deals</a>
           </div>
         </div>
-        <div class="slide-img"><img src="img-638a69c46d.jpg" alt="Smartphone — compare its price across stores" /></div>
+        <div class="hero-card" aria-label="Example price comparison">
+          <p class="hero-card-label">Example · Levi's 511 Jeans</p>
+          <ul class="hero-prices">
+            <li><span>Flipkart</span><strong>₹899</strong><em class="best">Best Price</em></li>
+            <li><span>Ajio</span><strong>₹1,575</strong></li>
+            <li><span>Myntra</span><strong>₹2,222</strong></li>
+          </ul>
+          <p class="hero-card-save">Save ₹1,323 vs the highest price · Checked 5 Nov 2026</p>
+          <a class="hero-card-link" href="#/product/9">See full comparison →</a>
+        </div>
       </article>
     </div>
   </section>
@@ -1807,10 +1829,10 @@
 
   <!-- At a glance -->
   <section class="stats" aria-label="YugKart at a glance">
-    <div class="stat"><strong>6</strong><span>stores in the comparison</span></div>
-    <div class="stat"><strong>11</strong><span>real products tracked in the catalogue</span></div>
-    <div class="stat"><strong>6</strong><span>original buying guides on the blog</span></div>
-    <div class="stat"><strong>5 Nov 2026</strong><span>date prices were last updated</span></div>
+    <div class="stat"><strong>6</strong><span>stores compared</span></div>
+    <div class="stat"><strong>11</strong><span>products tracked</span></div>
+    <div class="stat"><strong>5</strong><span>buying guides</span></div>
+    <div class="stat"><strong>5 Nov 2026</strong><span>prices last checked</span></div>
   </section>
 
   <!-- How comparison works -->
@@ -1836,14 +1858,14 @@
   <section class="tiles" aria-label="Shop by category">
     <button class="tile" type="button" data-goto="Electronics"><img src="img-78b47e186e.jpg" alt="Wireless headphones" /><span>Electronics <i>→</i></span></button>
     <button class="tile" type="button" data-goto="Fashion"><img src="img-147b9a3ead.jpg" alt="Cotton t-shirts" /><span>Fashion <i>→</i></span></button>
-    <button class="tile" type="button" data-goto="Grocery"><img src="img-60985f0ac1.jpg" alt="Fresh vegetables and groceries" /><span>Grocery <i>→</i></span></button>
+    
     <button class="tile" type="button" data-goto="Home"><img src="img-de28a3e526.jpg" alt="Kitchen stand mixer" /><span>Home &amp; Kitchen <i>→</i></span></button>
   </section>
 
   <!-- Why compare here -->
   <section class="quick" aria-label="Why compare on YugKart">
     <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><div><strong>No payment here</strong><span>You always pay on the store's own site — YugKart never takes your money</span></div></div>
-    <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><div><strong>Prices checked by hand</strong><span>A person on our team checks every price and stamps the date on the page — always confirm the final price on the store</span></div></div>
+    <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><div><strong>Prices checked by hand</strong><span>Every price checked by hand and dated. Confirm the final price on the store</span></div></div>
     <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9a8 8 0 1 1-1 6"/><path d="M3 4v5h5"/></svg><div><strong>Store's own returns</strong><span>Delivery, returns and warranty follow the store you buy from</span></div></div>
     <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg><div><strong>Straight to the product</strong><span>Every price box links to the same product on that store — no detours</span></div></div>
   </section>
@@ -1879,7 +1901,7 @@
     <div class="grid" id="grid"></div>
     <div class="empty" id="emptyState">
       <h3>No products match that search</h3>
-      <p>Try a different word — for example “phone”, “shoes” or “grocery” — or clear the category filter.</p>
+      <p>Try a different word — for example “phone”, “shoes” or “jeans” — or clear the category filter.</p>
       <button class="btn btn-accent" id="resetFilters" type="button">Show everything</button>
     </div>
   </section>
@@ -1887,22 +1909,7 @@
   <!-- Per-store sections (rendered by script) -->
   <div id="storeSections"></div>
 
-  <!-- Grocery -->
-  <section class="grocery" id="grocery">
-    <img src="img-60985f0ac1.jpg" alt="A basket of fresh vegetables and daily groceries" />
-    <div class="grocery-txt">
-      <span class="tag">Grocery Comparison</span>
-      <h2>The weekly basket, priced everywhere.</h2>
-      <p>The same basket, priced across stores — pick the cheapest before you order.</p>
-      <div class="slots" id="slots" role="group" aria-label="Delivery slots">
-        <button class="slot" type="button">In 15 minutes</button>
-        <button class="slot" type="button">Today, 6–8 PM</button>
-        <button class="slot" type="button">Tomorrow, 8–10 AM</button>
-        <button class="slot" type="button">Tomorrow, 6–8 PM</button>
-      </div>
-      <p class="slot-note" id="slotNote" aria-live="polite"></p>
-    </div>
-  </section>
+  
 
   <!-- Advertisement · in-feed -->
   <div class="ad-slot mid" data-ad-slot="mid-page" role="complementary" aria-label="Advertisement">
@@ -1911,9 +1918,9 @@
 
   <!-- Experience -->
   <section class="why" aria-label="The YugKart experience">
-    <article><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><h3>Find it in seconds</h3><p>Live search, category filters and five ways to sort — price, discount, rating and more — so the right product surfaces first, not after ten scrolls.</p></article>
-    <article><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><h3>Every store, one screen</h3><p>No more opening six apps and losing track of which price was where. One product page carries every tracked store's price in its own box, with the cheapest one marked for you.</p></article>
-    <article><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg><h3>Built for the phone first</h3><p>Most shoppers compare on mobile, so YugKart is designed phone-first: sticky search, a thumb-friendly grid and comparison boxes that stack cleanly on a small screen.</p></article>
+    <article><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><h3>Find it in seconds</h3><p>Search, filter, sort — the right product surfaces first.</p></article>
+    <article><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><h3>Every store, one screen</h3><p>One page, every store's price. Cheapest marked for you.</p></article>
+    <article><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg><h3>Built for the phone first</h3><p>Designed phone-first: sticky search, clean boxes on small screens.</p></article>
   </section>
 
   <!-- Blog -->
@@ -1933,10 +1940,7 @@
         <img src="img-78b47e186e.jpg" alt="Wireless over-ear headphones" loading="lazy" />
         <div class="b-body"><div class="b-meta">Audio · <time datetime="2026-11-03">3 Nov 2026</time> · 4 min read</div><h3>Headphones: what actually matters (and what is marketing)</h3><p>Fit first. Features second.</p><button class="read-btn" type="button" data-blog="headphones">Read the full guide →</button></div>
       </article>
-      <article class="blog-card">
-        <img src="img-60985f0ac1.jpg" alt="A basket of fresh vegetables" loading="lazy" />
-        <div class="b-body"><div class="b-meta">Grocery · <time datetime="2026-11-02">2 Nov 2026</time> · 3 min read</div><h3>Cut the weekly grocery bill without eating worse</h3><p>Buy the basket, not the items.</p><button class="read-btn" type="button" data-blog="grocery">Read the full guide →</button></div>
-      </article>
+      
       <article class="blog-card">
         <img src="img-f940e3434a.jpg" alt="A slim laptop on a desk" loading="lazy" />
         <div class="b-body"><div class="b-meta">Laptops · <time datetime="2026-11-01">1 Nov 2026</time> · 5 min read</div><h3>Laptop buying guide for students and work-from-home</h3><p>RAM and storage decide how it feels.</p><button class="read-btn" type="button" data-blog="laptop">Read the full guide →</button></div>
@@ -1968,13 +1972,13 @@
     <div>
       <span class="tag" style="background:var(--accent);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.32rem .75rem;border-radius:999px;display:inline-block">About YugKart</span>
       <h2>A comparison guide, not a store.</h2>
-      <p>YugKart is built by Yug Labs to solve one everyday problem: the same product costs a different amount on every shopping app, and checking all of them takes longer than buying should. So we check them for you — by hand, in the open, with the date shown — and send you straight to the store with the best price. We never take your payment, never hold your order, and never change the price you pay.</p>
+      <p>Same product, different price on every app. We check them by hand, show the date, and send you to the cheapest store. We never take your payment or change your price.</p>
     </div>
     <ul>
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Who runs it:</strong> Yug Labs — design, curation and price updates.</span></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>How it earns:</strong> store links are affiliate links — if you buy through one, the store may pay a small commission at no extra cost to you. See the Affiliate Disclosure in the footer.</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>How it earns:</strong> store links are affiliate links — a store may pay a small commission at no extra cost to you.</span></li>
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>What it is not:</strong> not a seller, not a payment page, and not affiliated with the stores it compares.</span></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Found a wrong price?</strong> Use Contact in the footer — a dated, honest listing matters more to us than a flattering one.</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Found a wrong price?</strong> Use Contact in the footer.</span></li>
     </ul>
   </section>
 
@@ -2010,7 +2014,7 @@
     <!-- SHOP -->
     <section class="spa-page" id="page-shop" aria-label="Shop all products page">
       <nav class="crumb"><a href="#">Home</a> › <span>Shop</span></nav>
-      <div class="page-hero"><span class="tag">Shop · All Products</span><h1>All products, every price compared.</h1><p>The full YugKart catalogue on one page — 11 tracked products in Fashion. Every product shows the lowest price we found and the store offering it, so open any product for the full store-by-store comparison. Prices were last checked on 5 November 2026 and are indicative estimates; the final price is always on the store's page.</p><div class="hero-cta"><a class="btn btn-accent" href="#/deals">See today's deals</a><a class="btn btn-ghost" href="#/categories" style="background:var(--surface);color:var(--ink);border-color:var(--line)">Browse categories</a></div></div>
+      <div class="page-hero"><span class="tag">Shop · All Products</span><h1>All products, every price compared.</h1><p>11 products in Fashion. Prices checked 5 Nov 2026 — final price is on the store.</p><div class="hero-cta"><a class="btn btn-accent" href="#/deals">See today's deals</a><a class="btn btn-ghost" href="#/categories" style="background:var(--surface);color:var(--ink);border-color:var(--line)">Browse categories</a></div></div>
       <div class="toolbar"><label for="shopSort">Sort by</label><select id="shopSort"><option value="pop">Popularity</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="off">Discount</option><option value="rating">Rating</option></select><span class="result-count" id="shopCount"></span></div>
       <div class="grid" id="shopGridPage"></div>
     </section>
@@ -2018,7 +2022,7 @@
     <!-- DEALS -->
     <section class="spa-page" id="page-deals" aria-label="Today's deals page">
       <nav class="crumb"><a href="#">Home</a> › <span>Today's Deals</span></nav>
-      <div class="page-hero"><span class="tag">Today's Deals</span><h1>Deals checked against every other store.</h1><p>A discount only counts when it is still the cheapest price after comparison. This page collects every product currently flagged as a deal in the catalogue, sorted by the biggest saving first. If the same product is cheaper elsewhere, that cheaper store is the one marked Best Price on the product page.</p></div>
+      <div class="page-hero"><span class="tag">Today's Deals</span><h1>Deals checked against every other store.</h1><p>A deal counts only if it's still the cheapest after comparison.</p></div>
       <div class="grid" id="dealsGridPage"></div>
       <div class="prose" style="margin-top:1rem"><h2>How to read a deal on YugKart</h2><p><strong>Check the comparison, not the banner.</strong> A “50% OFF” label is calculated against MRP, which is rarely the selling price anywhere. Compare the deal price with the same product on the other tracked stores, add any delivery charge, and only then decide. Bank offers and coupons are set by each store and confirmed at that store's checkout.</p></div>
     </section>
@@ -2026,7 +2030,7 @@
     <!-- STORES -->
     <section class="spa-page" id="page-stores" aria-label="All stores page">
       <nav class="crumb"><a href="#">Home</a> › <span>Stores</span></nav>
-      <div class="page-hero"><span class="tag">Stores Tracked</span><h1>Six stores. One comparison.</h1><p>YugKart tracks Amazon, Flipkart, Meesho, Ajio, Myntra and Croma. Each store has its own page below with the products tracked there and its starting price. Tap a store to open its full page.</p></div>
+      <div class="page-hero"><span class="tag">Stores Tracked</span><h1>Six stores. One comparison.</h1><p>Tap a store to see its products.</p></div>
       <div class="page-grid" id="storesPageGrid"></div>
       <div class="prose" style="margin-top:1rem"><h2>Which store is best for what?</h2><ul><li><strong>Amazon</strong> — widest electronics and general range, Prime delivery options on many products.</li><li><strong>Flipkart</strong> — strong on phones and appliances, with frequent bank offers.</li><li><strong>Meesho</strong> — budget fashion, home and everyday picks; delivery times vary by seller.</li><li><strong>Ajio</strong> — fashion and home, with its own label collections.</li><li><strong>Myntra</strong> — fashion-first, with easy size exchange on clothing and footwear.</li><li><strong>Croma</strong> — electronics specialist, with in-store pickup options in many cities.</li></ul><p>No store is best for everything — that is exactly why the comparison exists. YugKart is not affiliated with or endorsed by any of these stores.</p></div>
     </section>
@@ -2042,11 +2046,11 @@
     <!-- CATEGORIES -->
     <section class="spa-page" id="page-categories" aria-label="Categories page">
       <nav class="crumb"><a href="#">Home</a> › <span>Categories</span></nav>
-      <div class="page-hero"><span class="tag">Categories</span><h1>Shop by category.</h1><p>Four clear categories, each with its own tracked stores and buying guide. Open a category to see only its products, already compared.</p></div>
+      <div class="page-hero"><span class="tag">Categories</span><h1>Shop by category.</h1><p>Three categories. Open one to see its products, already compared.</p></div>
       <div class="cat-tiles">
         <article class="page-card"><div class="pc-ico">E</div><h3>Electronics</h3><p>Phones, headphones, smartwatches and laptops — compared on Amazon, Flipkart, Croma and Meesho. Prices vary the most here, so comparison saves the most.</p><p style="margin-top:.7rem"><a href="#/category/Electronics">Open Electronics →</a> · <a href="#/blog" data-blog-link="phone">Phone guide</a></p></article>
         <article class="page-card"><div class="pc-ico">F</div><h3>Fashion</h3><p>Shoes, t-shirts and everyday clothing — compared on Myntra, Ajio, Amazon, Flipkart and Meesho. Check size exchange terms on the store before ordering.</p><p style="margin-top:.7rem"><a href="#/category/Fashion">Open Fashion →</a> · <a href="#/blog" data-blog-link="shoes">Shoe guide</a></p></article>
-        <article class="page-card"><div class="pc-ico">G</div><h3>Grocery</h3><p>The weekly vegetable basket and family produce box — compared on Amazon, Flipkart and Meesho. Compare the whole basket total, not single items.</p><p style="margin-top:.7rem"><a href="#/category/Grocery">Open Grocery →</a> · <a href="#/blog" data-blog-link="grocery">Grocery guide</a></p></article>
+        
         <article class="page-card"><div class="pc-ico">H</div><h3>Home &amp; Kitchen</h3><p>Stand mixers and kitchen essentials — compared on Amazon, Flipkart, Ajio and Meesho. Kitchen appliances carry some of the widest price gaps.</p><p style="margin-top:.7rem"><a href="#/category/Home">Open Home &amp; Kitchen →</a> · <a href="#/blog" data-blog-link="mixer">Mixer guide</a></p></article>
       </div>
     </section>
@@ -2082,11 +2086,11 @@
     <!-- BLOG -->
     <section class="spa-page" id="page-blog" aria-label="Blog page">
       <nav class="crumb"><a href="#">Home</a> › <span>Blog</span></nav>
-      <div class="page-hero"><span class="tag">YugKart Blog</span><h1>Buying guides that save real money.</h1><p>Six original guides by the YugKart team — what to check, what to skip, and how to tell a real saving from a dressed-up MRP. Tap any post to read the full article.</p></div>
+      <div class="page-hero"><span class="tag">YugKart Blog</span><h1>Buying guides that save real money.</h1><p>Five short guides — what to check, what to skip.</p></div>
       <div class="blog-grid">
         <article class="blog-card"><img src="img-638a69c46d.jpg" alt="A smartphone on a clean surface" loading="lazy" /><div class="b-body"><div class="b-meta">Smartphones · 4 Nov 2026 · 4 min</div><h3>How to choose a smartphone without overpaying</h3><p>Battery, screen and storage decide how a phone feels after a year — not the launch headline.</p><button class="read-btn" type="button" data-blog="phone">Read the full guide →</button></div></article>
         <article class="blog-card"><img src="img-78b47e186e.jpg" alt="Wireless over-ear headphones" loading="lazy" /><div class="b-body"><div class="b-meta">Audio · 3 Nov 2026 · 4 min</div><h3>Headphones: what actually matters (and what is marketing)</h3><p>Fit beats features, and battery claims are tested at half volume. A plain-English guide before you spend.</p><button class="read-btn" type="button" data-blog="headphones">Read the full guide →</button></div></article>
-        <article class="blog-card"><img src="img-60985f0ac1.jpg" alt="A basket of fresh vegetables" loading="lazy" /><div class="b-body"><div class="b-meta">Grocery · 2 Nov 2026 · 3 min</div><h3>Cut the weekly grocery bill without eating worse</h3><p>Buy the basket, not the items. Let the season set the menu and order once over the free-delivery line.</p><button class="read-btn" type="button" data-blog="grocery">Read the full guide →</button></div></article>
+        
         <article class="blog-card"><img src="img-f940e3434a.jpg" alt="A slim laptop on a desk" loading="lazy" /><div class="b-body"><div class="b-meta">Laptops · 1 Nov 2026 · 5 min</div><h3>Laptop buying guide for students and work-from-home</h3><p>RAM and SSD decide speed far more than the processor badge. What 16 GB and 512 GB actually buy you.</p><button class="read-btn" type="button" data-blog="laptop">Read the full guide →</button></div></article>
         <article class="blog-card"><img src="img-21771e0c3d.jpg" alt="A pair of running shoes" loading="lazy" /><div class="b-body"><div class="b-meta">Fashion &amp; Fitness · 31 Oct 2026 · 4 min</div><h3>Running shoes: fit first, brand last</h3><p>A thumb's width at the toe, the right sole for your surface, and why the priciest shoe is rarely right for a beginner.</p><button class="read-btn" type="button" data-blog="shoes">Read the full guide →</button></div></article>
         <article class="blog-card"><img src="img-de28a3e526.jpg" alt="A stand mixer in a kitchen" loading="lazy" /><div class="b-body"><div class="b-meta">Home &amp; Kitchen · 30 Oct 2026 · 4 min</div><h3>Stand mixer vs hand mixer: which earns its counter space?</h3><p>If you knead dough weekly the answer differs from baking monthly. Wattage, bowl size and attachments — compared honestly.</p><button class="read-btn" type="button" data-blog="mixer">Read the full guide →</button></div></article>
@@ -2096,12 +2100,12 @@
     <!-- ABOUT -->
     <section class="spa-page" id="page-about" aria-label="About YugKart page">
       <nav class="crumb"><a href="#">Home</a> › <span>About</span></nav>
-      <div class="page-hero"><span class="tag">About YugKart</span><h1>A comparison guide, not a store.</h1><p>YugKart is built by Yug Labs to solve one everyday problem: the same product costs a different amount on every shopping app, and checking all of them takes longer than buying should.</p></div>
+      <div class="page-hero"><span class="tag">About YugKart</span><h1>A comparison guide, not a store.</h1><p>Same product, different price on every app. We put them side by side.</p></div>
       <div class="prose">
         <h2>YugKart fact sheet</h2>
-        <table class="fact-sheet"><tr><th>What YugKart is</th><td>A price comparison and buying-guide website for shoppers in India.</td></tr><tr><th>Stores compared</th><td>Amazon, Flipkart, Meesho, Ajio, Myntra and Croma — 6 stores.</td></tr><tr><th>What YugKart does</th><td>Shows the same product's price on each tracked store, side by side — every price a checked, dated indicative estimate — marks the lowest as Best Price, and links directly to that product on each store.</td></tr><tr><th>What YugKart does not do</th><td>It does not sell products, take payment, deliver orders, or handle returns. Every purchase is made on the store's own website under that store's terms.</td></tr><tr><th>How prices are shown</th><td>Each price is checked by our team and shown as an indicative estimate with the date it was last checked (currently 5 November 2026). The store's checkout price is always the final price.</td></tr><tr><th>How YugKart earns</th><td>Affiliate links and advertising. If you buy through a store link, that store may pay a small commission at no extra cost to you.</td></tr><tr><th>Operated by</th><td>Yug Labs, India.</td></tr></table>
-        <h2>Why we built it</h2><p>Most shoppers open three or four apps, note prices in their head, lose track, and either overpay or give up. YugKart puts every tracked store's price in one place, in separate boxes under one big product view — so the cheapest option is visible in seconds, not after ten app switches.</p>
-        <h2>Our rules</h2><ul><li><strong>Comparison first</strong> — the lowest price is marked by price alone, never by commission.</li><li><strong>Dated prices</strong> — every listing shows when its prices were last updated.</li><li><strong>Open disclosure</strong> — affiliate earning is disclosed on every page, as affiliate programmes require.</li><li><strong>No payment here</strong> — YugKart never asks for card, UPI or bank details.</li></ul>
+        <table class="fact-sheet"><tr><th>What YugKart is</th><td>A price comparison and buying-guide website for shoppers in India.</td></tr><tr><th>Stores compared</th><td>Amazon, Flipkart, Meesho, Ajio, Myntra and Croma — 6 stores.</td></tr><tr><th>What YugKart does</th><td>Same product's price on each store, side by side. Lowest marked Best Price.</td></tr><tr><th>What YugKart does not do</th><td>No selling, no payments, no delivery, no returns. You buy on the store's own site.</td></tr><tr><th>How prices are shown</th><td>Checked by hand, dated 5 Nov 2026. The store's checkout price is final.</td></tr><tr><th>How YugKart earns</th><td>Affiliate links and advertising. If you buy through a store link, that store may pay a small commission at no extra cost to you.</td></tr><tr><th>Operated by</th><td>Yug Labs, India.</td></tr></table>
+        <h2>Why we built it</h2><p>Most shoppers open three or four apps, lose track, and overpay. YugKart puts every store's price in one place — cheapest in seconds.</p>
+        <h2>Our rules</h2><ul><li><strong>Comparison first</strong> — the lowest price is marked by price alone, never by commission.</li><li><strong>Dated prices</strong> — every listing shows when its prices were last updated.</li><li><strong>Open disclosure</strong> — affiliate earning is disclosed on every page.</li><li><strong>No payment here</strong> — YugKart never asks for card, UPI or bank details.</li></ul>
         <p style="margin-top:1rem"><a class="btn btn-accent" href="#/how-we-check" style="text-decoration:none">See how we check prices</a> <a class="btn" href="#/contact" style="border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none">Contact YugKart</a></p>
       </div>
     </section>
@@ -2109,41 +2113,41 @@
     <!-- HOW WE CHECK -->
     <section class="spa-page" id="page-how" aria-label="How we check prices page">
       <nav class="crumb"><a href="#">Home</a> › <span>How We Check Prices</span></nav>
-      <div class="page-hero"><span class="tag">Our Method</span><h1>How prices on YugKart are checked.</h1><p>No automated feed and no live-price claims. A person on our team opens each store, notes the price, and stamps the date on the page — here is exactly how it works, step by step.</p></div>
+      <div class="page-hero"><span class="tag">Our Method</span><h1>How prices on YugKart are checked.</h1><p>Checked by hand. Dated on the page. No live-price claims.</p></div>
       <div class="process" style="margin-bottom:1rem">
-        <article><span class="pn">1</span><h3>Start with what people actually buy</h3><p>We pick products from the bestseller and trending lists of the stores we track, then filter for rating and value.</p></article>
-        <article><span class="pn">2</span><h3>Check every store by hand</h3><p>For each product, we open every store that carries its category and note the price we find. That noted price becomes the indicative estimate on the page.</p></article>
-        <article><span class="pn">3</span><h3>Put each price in its own box</h3><p>Every store's price goes into its own box on the product page, sorted lowest first, with the lowest marked Best Price and the check date shown.</p></article>
-        <article><span class="pn">4</span><h3>Keep checking, keep it honest</h3><p>We re-check regularly and take down deals that have ended. The store's checkout price is always the final word.</p></article>
+        <article><span class="pn">1</span><h3>Start with what people actually buy</h3><p>Picked from bestseller lists, filtered for rating and value.</p></article>
+        <article><span class="pn">2</span><h3>Check every store by hand</h3><p>We open every store and note the price. That becomes the estimate on the page.</p></article>
+        <article><span class="pn">3</span><h3>Put each price in its own box</h3><p>Each store gets its own box, lowest first, lowest marked Best Price.</p></article>
+        <article><span class="pn">4</span><h3>Keep checking, keep it honest</h3><p>Re-checked regularly. Ended deals come down.</p></article>
       </div>
-      <div class="prose"><h2>What “indicative” means for you</h2><p>Use the comparison to choose <strong>which store to check first</strong> — that is where it saves you real time and, usually, real money. Then confirm the exact price, delivery charge and any bank or coupon offer on that store's page before paying. If a price here looks wrong, tell us on the <a href="#/contact">Contact page</a> and it will be corrected on the next update.</p><h2>How often are prices checked?</h2><p>Every listing carries the date it was last checked — currently <strong>5 November 2026</strong> for the catalogue on this site. Stores can change prices at any time, including between our check and your visit, which is why the date is shown openly instead of calling any price “live”.</p></div>
+      <div class="prose"><h2>What “indicative” means for you</h2><p>Use it to pick which store to check first. Then confirm the exact price on that store before paying.</p><h2>How often are prices checked?</h2><p>Every listing shows its check date — currently <strong>5 November 2026</strong>. Stores can change prices any time, so no price is called “live”.</p></div>
     </section>
 
     <!-- FAQ PAGE -->
     <section class="spa-page" id="page-faq" aria-label="FAQ page">
       <nav class="crumb"><a href="#">Home</a> › <span>FAQ</span></nav>
-      <div class="page-hero"><span class="tag">Help</span><h1>Frequently asked questions.</h1><p>Everything a first-time visitor asks — selling, payments, prices, returns, affiliate links and privacy — answered straight, in one page.</p></div>
+      <div class="page-hero"><span class="tag">Help</span><h1>Frequently asked questions.</h1><p>Short answers. No jargon.</p></div>
       <div class="faq">
-        <details open><summary>Does YugKart sell products or take payment?</summary><p>No. YugKart only compares prices and publishes guides. You buy and pay on the store you choose, under that store's own delivery, returns and warranty terms. YugKart never asks for card or UPI details.</p></details>
-        <details><summary>Why is the same product priced differently on different stores?</summary><p>Stores run different sale calendars, bank offers, coupons, delivery charges and stock clearances — often on the same day. That gap is exactly what a comparison page exists to show you.</p></details>
-        <details><summary>Are the prices live?</summary><p>No — every price is an indicative estimate checked by our team, and every listing shows the date it was last checked (currently 5 November 2026). The price on the store's page at checkout is always the final one.</p></details>
-        <details><summary>How does YugKart make money if it charges nothing?</summary><p>Through affiliate links and advertising. If you buy through a store link, that store may pay a small commission out of its own margin — it never changes the price you pay.</p></details>
-        <details><summary>Can I return something bought through a YugKart link?</summary><p>Yes, through the store you bought it from. That store's return window, refund method and warranty apply in full. See the <a href="#/returns">Returns &amp; Refunds page</a>.</p></details>
-        <details><summary>What if a price is wrong or a deal has ended?</summary><p>Tell us via the <a href="#/contact">Contact page</a>. Verified errors are fixed on the next price update.</p></details>
-        <details><summary>Which stores does YugKart compare?</summary><p>Amazon, Flipkart, Meesho, Ajio, Myntra and Croma. Not every store carries every category — each product page shows only the stores tracked for its category. See the <a href="#/stores">Stores page</a>.</p></details>
-        <details><summary>What is the Shortlist and Wishlist?</summary><p>The Wishlist saves products you like; the Shortlist saves products you are actively comparing, with a summary showing where each one is cheapest. Both live only in your browser for the current session.</p></details>
-        <details><summary>Does YugKart need my personal data?</summary><p>No account, sign-up or checkout exists on YugKart, and no name, address or payment details are collected here. See the <a href="#/privacy">Privacy Policy</a>.</p></details>
-        <details><summary>Is YugKart affiliated with Amazon, Flipkart or the other stores?</summary><p>No. Store names and trademarks belong to their owners; YugKart is an independent comparison guide and participates in affiliate programmes.</p></details>
+        <details open><summary>Does YugKart sell products or take payment?</summary><p>No. You buy and pay on the store you choose. YugKart never asks for card or UPI details.</p></details>
+        <details><summary>Why is the same product priced differently on different stores?</summary><p>Different sales, bank offers, coupons and delivery charges — often on the same day.</p></details>
+        <details><summary>Are the prices live?</summary><p>No — every price is an indicative estimate, dated on the page (5 November 2026). The store's checkout price is final.</p></details>
+        <details><summary>How does YugKart make money if it charges nothing?</summary><p>Through affiliate links and advertising. A store may pay a small commission — it never changes your price.</p></details>
+        <details><summary>Can I return something bought through a YugKart link?</summary><p>Yes — through the store you bought from. Its return and warranty terms apply.</p></details>
+        <details><summary>What if a price is wrong or a deal has ended?</summary><p>Tell us via the <a href="#/contact">Contact page</a>.</p></details>
+        <details><summary>Which stores does YugKart compare?</summary><p>Amazon, Flipkart, Meesho, Ajio, Myntra and Croma.</p></details>
+        <details><summary>What is the Shortlist and Wishlist?</summary><p>Wishlist saves likes. Shortlist saves what you're comparing, with the cheapest store for each. Both live only in this browser session.</p></details>
+        <details><summary>Does YugKart need my personal data?</summary><p>No account, no sign-up, no checkout. No name, address or payment details collected.</p></details>
+        <details><summary>Is YugKart affiliated with Amazon, Flipkart or the other stores?</summary><p>No. Store names and trademarks belong to their owners.</p></details>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="spa-page" id="page-contact" aria-label="Contact page">
       <nav class="crumb"><a href="#">Home</a> › <span>Contact</span></nav>
-      <div class="page-hero"><span class="tag">Contact</span><h1>Contact YugKart.</h1><p>For a wrong price, an ended deal, a broken store link, a guide correction, or a business enquiry — prepare your message below. For an order, delivery or refund, contact the store you bought from directly: only that store can see your order.</p></div>
+      <div class="page-hero"><span class="tag">Contact</span><h1>Contact YugKart.</h1><p>Wrong price, broken link, or a business enquiry — write below. Orders? Contact the store directly.</p></div>
       <div class="contact-grid">
-        <div class="prose"><h2>Before you write</h2><ul><li><strong>Wrong price / ended deal</strong> — include the product name and the store name.</li><li><strong>Broken link</strong> — include the product name and which store box you tapped.</li><li><strong>Order, delivery, return, refund</strong> — contact that store's support in its app or website; YugKart holds no order information.</li><li><strong>Privacy question</strong> — see the <a href="#/privacy">Privacy Policy</a> first; it explains exactly what is and is not collected.</li></ul><h3>Operated by</h3><p><strong>Yug Labs</strong>, India. Reach YugKart via the Yug Labs official website and its official social / Fiverr channels listed there. Verified price errors are fixed on the next price update.</p></div>
-        <form class="contact-form" id="contactForm"><h2 style="margin:0;font-size:1.2rem">Prepare your message</h2><p style="color:var(--muted);font-size:.9rem;margin:.35rem 0 0">This form prepares a ready-to-send message on your device — nothing is sent or stored by this page. Copy it and send it through any Yug Labs official channel.</p>
+        <div class="prose"><h2>Before you write</h2><ul><li><strong>Wrong price / ended deal</strong> — product name + store name.</li><li><strong>Broken link</strong> — product name + store box.</li><li><strong>Order, delivery, return, refund</strong> — contact that store. YugKart holds no order info.</li><li><strong>Privacy question</strong> — see the <a href="#/privacy">Privacy Policy</a> first.</li></ul><h3>Operated by</h3><p><strong>Yug Labs</strong>, India.</p></div>
+        <form class="contact-form" id="contactForm"><h2 style="margin:0;font-size:1.2rem">Prepare your message</h2><p style="color:var(--muted);font-size:.9rem;margin:.35rem 0 0">Nothing is sent or stored here. Copy your message and send it via any Yug Labs channel.</p>
           <div class="field"><label for="cfName">Your name</label><input id="cfName" type="text" autocomplete="name" placeholder="Your name" /></div>
           <div class="field"><label for="cfTopic">Topic</label><select id="cfTopic"><option>Wrong price or ended deal</option><option>Broken store link</option><option>Correction to a buying guide</option><option>Business / advertising enquiry</option><option>Privacy question</option><option>Other</option></select></div>
           <div class="field"><label for="cfProduct">Product / store (if relevant)</label><input id="cfProduct" type="text" placeholder="e.g. Best Selling Saree — Meesho" /></div>
@@ -2157,7 +2161,7 @@
     <!-- WISHLIST -->
     <section class="spa-page" id="page-wishlist" aria-label="Wishlist page">
       <nav class="crumb"><a href="#">Home</a> › <span>Wishlist</span></nav>
-      <div class="page-hero"><span class="tag">Wishlist</span><h1>Your wishlist.</h1><p>Products you tapped the heart on, collected on one page. Tap Compare on any item to see every store's price. Your wishlist lives only in this browser session.</p></div>
+      <div class="page-hero"><span class="tag">Wishlist</span><h1>Your wishlist.</h1><p>Hearts you tapped, in one place. Saved only in this browser session.</p></div>
       <div class="grid" id="wishlistGridPage"></div>
       <div class="empty" id="wishlistEmpty"><h3>Your wishlist is empty</h3><p>Tap the heart on any product in the Shop to save it here.</p><a class="btn btn-accent" href="#/shop" style="text-decoration:none">Browse the Shop</a></div>
     </section>
@@ -2165,7 +2169,7 @@
     <!-- SHORTLIST -->
     <section class="spa-page" id="page-shortlist" aria-label="Shortlist page">
       <nav class="crumb"><a href="#">Home</a> › <span>Shortlist</span></nav>
-      <div class="page-hero"><span class="tag">Shortlist</span><h1>Your shortlist — at best prices.</h1><p>Every item you shortlisted, with the store where it is cheapest and the best-price total. Open the summary below to jump straight to each store.</p></div>
+      <div class="page-hero"><span class="tag">Shortlist</span><h1>Your shortlist — at best prices.</h1><p>Cheapest store for each item, in one summary.</p></div>
       <div id="shortlistPageList" style="display:grid;gap:.8rem"></div>
       <div class="empty" id="shortlistEmpty"><h3>Your shortlist is empty</h3><p>Open any product and tap “Save to Shortlist” to build your best-price list.</p><a class="btn btn-accent" href="#/shop" style="text-decoration:none">Browse the Shop</a></div>
       <p style="margin-top:1rem"><button class="btn btn-accent" type="button" id="shortlistOpenDrawer">Open shortlist &amp; summary</button></p>
@@ -2175,37 +2179,37 @@
     <section class="spa-page" id="page-privacy" aria-label="Privacy Policy page">
       <nav class="crumb"><a href="#">Home</a> › <span>Privacy Policy</span></nav>
       <div class="page-hero"><span class="tag">Policy</span><h1>Privacy Policy</h1><p>Last updated 4 November 2026 · YugKart, operated by Yug Labs, India.</p></div>
-      <div class="prose"><p><strong>What YugKart collects:</strong> this website has no user accounts, no sign-up, no checkout and no payment form. We do not ask for or store your name, address, phone, card or UPI details. Your shortlist and wishlist exist only in your browser for the current session and are cleared when the session ends.</p><h2>Analytics &amp; advertising cookies</h2><p>This site may use Google AdSense and analytics cookies. Google and its partners may use cookies to serve ads based on your visits to this and other websites. You can opt out of personalised advertising through Google Ad Settings, and block or delete cookies in your browser at any time. See the <a href="#/cookies">Cookie Policy</a>.</p><h2>Affiliate partners</h2><p>When you click a store link, the store and its affiliate programme (such as Amazon Associates) may use cookies to attribute the purchase so the correct commission is paid. Those cookies are governed by that store's own privacy policy once you leave YugKart.</p><h2>Your rights</h2><p>Because YugKart holds no account or personal profile for you, there is no personal data to access, correct or delete on our side. For data held by a store you bought from, contact that store directly.</p><h2>Children &amp; changes</h2><p>This site is intended for general shopping comparison and is not directed at children under 13. If this policy changes, the updated version will be published on this page with a new last-updated date.</p></div>
+      <div class="prose"><p><strong>What YugKart collects:</strong> No accounts, no sign-up, no checkout, no payment form. No name, address, phone, card or UPI details asked or stored. Shortlist and wishlist live only in this browser session.</p><h2>Analytics &amp; advertising cookies</h2><p>This site may use AdSense and analytics cookies. Opt out in Google Ad Settings, or block cookies in your browser. See the <a href="#/cookies">Cookie Policy</a>.</p><h2>Affiliate partners</h2><p>When you click a store link, the store and its affiliate programme may use cookies to attribute the purchase so the correct commission is paid. Those cookies are governed by that store's own privacy policy once you leave YugKart.</p><h2>Your rights</h2><p>We hold no account or profile for you, so there's no personal data to access or delete here. For a store's data, contact that store.</p><h2>Children &amp; changes</h2><p>Not directed at children under 13. Policy changes will be published here with a new date.</p></div>
     </section>
 
     <section class="spa-page" id="page-terms" aria-label="Terms of Use page">
       <nav class="crumb"><a href="#">Home</a> › <span>Terms of Use</span></nav>
       <div class="page-hero"><span class="tag">Policy</span><h1>Terms of Use</h1><p>Last updated 4 November 2026.</p></div>
-      <div class="prose"><p>By using YugKart you accept these terms. YugKart publishes price comparisons and buying guides for general information. We work to keep listings accurate, but we do not guarantee that a price, discount or stock status shown here will match the store at the moment you buy.</p><h2>Your purchase is with the store</h2><p>Any purchase you make is a contract between you and the store you buy from, under that store's own terms — including its payment, delivery, return and warranty policies. Store names and trademarks belong to their respective owners; YugKart is not affiliated with or endorsed by them.</p><h2>Acceptable use</h2><p>Do not misuse this site, attempt to disrupt it, scrape it in a way that overloads it, or copy its original guides and content for republication without permission.</p><h2>Liability</h2><p>To the extent permitted by law, YugKart is not liable for a store's pricing, delivery, product quality, returns or refunds, as those are the store's responsibilities as seller.</p></div>
+      <div class="prose"><p>By using YugKart you accept these terms. Price comparisons and buying guides, for general information. Prices may differ on the store when you buy.</p><h2>Your purchase is with the store</h2><p>Any purchase is between you and the store, under its own terms. Store names and trademarks belong to their owners; YugKart is not affiliated with or endorsed by them.</p><h2>Acceptable use</h2><p>Don't misuse, disrupt, or overload this site, or republish its guides without permission.</p><h2>Liability</h2><p>YugKart is not liable for a store's pricing, delivery, quality, returns or refunds — those are the seller's.</p></div>
     </section>
 
     <section class="spa-page" id="page-disclosure" aria-label="Affiliate Disclosure page">
       <nav class="crumb"><a href="#">Home</a> › <span>Affiliate Disclosure</span></nav>
-      <div class="page-hero"><span class="tag">Policy</span><h1>Affiliate Disclosure</h1><p>How YugKart earns — in plain words, as affiliate programmes require.</p></div>
-      <div class="prose"><p>YugKart is a price-comparison and shopping-guide website built by Yug Labs. The store links on this site are <strong>affiliate links</strong>, served through Amazon Associates, Cuelinks and the stores' own affiliate programmes.</p><p>If you click a store link and buy on that store, YugKart may earn a small commission from the store. <strong>It never changes the price you pay</strong> — the commission comes out of the store's margin, not your pocket.</p><p>Prices are checked by our team, not pulled from any store API — each one is an indicative estimate that can change at any time, and every product shows the date its prices were last checked. The price shown on the store when you check out is the final, correct price. Orders, payment, delivery, returns and warranties are handled entirely by the store you buy from; YugKart itself sells nothing and takes no payment.</p><p>Rankings on YugKart are by price and popularity, never by commission: the Best Price mark follows the lowest price alone.</p></div>
+      <div class="page-hero"><span class="tag">Policy</span><h1>Affiliate Disclosure</h1><p>How YugKart earns — in plain words.</p></div>
+      <div class="prose"><p>YugKart is a price-comparison and shopping-guide website built by Yug Labs. The store links on this site are <strong>affiliate links</strong>, served through Cuelinks and the stores' own affiliate programmes.</p><p>If you click a store link and buy on that store, YugKart may earn a small commission from the store. <strong>It never changes the price you pay</strong> — the commission comes out of the store's margin, not your pocket.</p><p>Prices are checked by hand, not pulled from any store feed — each one is an indicative estimate. The store's checkout price is final. Orders, payment, delivery and returns are the store's job — YugKart sells nothing.</p><p>Best Price follows the lowest price alone — never commission.</p></div>
     </section>
 
     <section class="spa-page" id="page-cookies" aria-label="Cookie Policy page">
       <nav class="crumb"><a href="#">Home</a> › <span>Cookie Policy</span></nav>
       <div class="page-hero"><span class="tag">Policy</span><h1>Cookie Policy</h1><p>Last updated 4 November 2026.</p></div>
-      <div class="prose"><p>Cookies are small files stored in your browser. YugKart itself uses only essential, session-only handling for your shortlist and wishlist — these are not tracking cookies and disappear when the session ends.</p><h2>Third-party cookies</h2><p>Google AdSense / Google advertising partners and affiliate programmes (such as Amazon Associates) may set cookies when ads are shown or when you click a store link, to measure ads, prevent fraud and attribute affiliate purchases.</p><h2>Your control</h2><p>You can block, clear or limit cookies in your browser settings, and opt out of personalised ads in Google Ad Settings. Blocking cookies will not stop you from comparing prices on YugKart, but store checkout and affiliate attribution may work differently.</p></div>
+      <div class="prose"><p>YugKart uses only session-only handling for your shortlist and wishlist — not tracking cookies. They disappear when the session ends.</p><h2>Third-party cookies</h2><p>Google AdSense / advertising partners and affiliate programmes may set cookies when ads are shown or you click a store link — to measure ads, prevent fraud and attribute purchases.</p><h2>Your control</h2><p>Block or clear cookies in your browser, or opt out of personalised ads in Google Ad Settings. Blocking cookies won't stop price comparison.</p></div>
     </section>
 
     <section class="spa-page" id="page-returns" aria-label="Returns and Refunds page">
       <nav class="crumb"><a href="#">Home</a> › <span>Returns &amp; Refunds</span></nav>
-      <div class="page-hero"><span class="tag">Policy</span><h1>Returns, Refunds &amp; Cancellation</h1><p>YugKart sells nothing — so returns always run through the store you bought from. Here is exactly how that works.</p></div>
+      <div class="page-hero"><span class="tag">Policy</span><h1>Returns, Refunds &amp; Cancellation</h1><p>YugKart sells nothing — returns always run through the store you bought from.</p></div>
       <div class="prose"><p><strong>YugKart itself has no return, refund or cancellation process</strong> — there is no order, payment or delivery from YugKart to return or cancel.</p><h2>Your order is with the store</h2><p>Every purchase you make after clicking a YugKart link is an order with that store (Amazon, Flipkart, Meesho, Ajio, Myntra, Croma or another store). That store's return window, refund method, cancellation rules, delivery charges and warranty apply in full, exactly as if you had gone to that store directly.</p><h2>How to return or get a refund</h2><ol><li>Open your order in that store's app or website.</li><li>Choose return, replacement or cancellation and follow that store's steps.</li><li>Keep the store's order confirmation and invoice — you will need them.</li></ol><p>If a store refuses a return or refund, your consumer rights are against that store as the seller.</p></div>
     </section>
 
     <section class="spa-page" id="page-disclaimer" aria-label="Disclaimer page">
       <nav class="crumb"><a href="#">Home</a> › <span>Disclaimer</span></nav>
       <div class="page-hero"><span class="tag">Policy</span><h1>Disclaimer</h1><p>What YugKart does — and does not — promise.</p></div>
-      <div class="prose"><p>YugKart publishes price comparisons and buying guides for general information only. While price estimates are dated on the page, stores can change prices, offers, stock and delivery charges at any time without notice. We do not guarantee that a price shown here will be available when you reach the store.</p><p>Product images are for identification and comparison. Specifications should be confirmed on the store's product page before buying. YugKart is not a seller, agent or representative of any store it compares, and mentioning a store or product is not an endorsement of that store.</p><p>Nothing on this site is financial advice. Please check the total payable — including delivery and any bank or EMI charges — on the store's checkout before paying.</p></div>
+      <div class="prose"><p>Price comparisons and buying guides, for general information only. Prices are dated on the page; stores can change them any time. We don't guarantee a price will still be there when you reach the store.</p><p>Images are for identification. Confirm specs on the store's product page before buying. YugKart is not a seller, agent or representative of any store. Mentioning a store is not an endorsement.</p><p>Nothing here is financial advice. Check the total payable on the store's checkout before paying.</p></div>
     </section>
 
     <!-- SITEMAP -->
@@ -2213,7 +2217,7 @@
       <nav class="crumb"><a href="#">Home</a> › <span>Sitemap</span></nav>
       <div class="page-hero"><span class="tag">Sitemap</span><h1>Every page on YugKart.</h1><p>The complete map of this website — shopping, guides, company and policy pages, all in one place.</p></div>
       <div class="sitemap-list">
-        <article class="page-card"><h3>Shopping</h3><ul><li><a href="#">Home</a></li><li><a href="#/shop">Shop — All Products</a></li><li><a href="#/deals">Today's Deals</a></li><li><a href="#/categories">Categories</a></li><li><a href="#/category/Electronics">Electronics</a></li><li><a href="#/category/Fashion">Fashion</a></li><li><a href="#/category/Grocery">Grocery</a></li><li><a href="#/category/Home">Home &amp; Kitchen</a></li><li><a href="#/wishlist">Wishlist</a></li><li><a href="#/shortlist">Shortlist</a></li></ul></article>
+        <article class="page-card"><h3>Shopping</h3><ul><li><a href="#">Home</a></li><li><a href="#/shop">Shop — All Products</a></li><li><a href="#/deals">Today's Deals</a></li><li><a href="#/categories">Categories</a></li><li><a href="#/category/Electronics">Electronics</a></li><li><a href="#/category/Fashion">Fashion</a></li><li><a href="#/category/Home">Home &amp; Kitchen</a></li><li><a href="#/wishlist">Wishlist</a></li><li><a href="#/shortlist">Shortlist</a></li></ul></article>
         <article class="page-card"><h3>Stores</h3><ul><li><a href="#/stores">All Stores</a></li><li><a href="#/store/amazon">Amazon</a></li><li><a href="#/store/flipkart">Flipkart</a></li><li><a href="#/store/meesho">Meesho</a></li><li><a href="#/store/ajio">Ajio</a></li><li><a href="#/store/myntra">Myntra</a></li><li><a href="#/store/croma">Croma</a></li></ul></article>
         <article class="page-card"><h3>Guides &amp; Company</h3><ul><li><a href="#/blog">Blog &amp; Buying Guides</a></li><li><a href="#/about">About YugKart</a></li><li><a href="#/how-we-check">How We Check Prices</a></li><li><a href="#/faq">FAQ</a></li><li><a href="#/contact">Contact</a></li></ul><h3 style="margin-top:1rem">Policies</h3><ul><li><a href="#/privacy">Privacy Policy</a></li><li><a href="#/terms">Terms of Use</a></li><li><a href="#/disclosure">Affiliate Disclosure</a></li><li><a href="#/cookies">Cookie Policy</a></li><li><a href="#/returns">Returns &amp; Refunds</a></li><li><a href="#/disclaimer">Disclaimer</a></li></ul></article>
       </div>
@@ -2226,10 +2230,9 @@
   <div class="foot-in">
     <div class="foot-brand">
       <h4>YugKart — Compare. Save. Shop Smart.</h4>
-      <p>India's simple price comparison guide. One product, every store's price, side by side — across Amazon, Flipkart, Meesho, Ajio, Myntra and Croma. Find the lowest price, then buy directly from that store.</p>
+      <p>One product. Six stores. Lowest price, side by side.</p>
       <div class="foot-contact">
         <span>Operated by <strong>Yug Labs</strong> · India</span>
-        <span>For price corrections, use Contact below — we fix reported errors on the next update.</span>
       </div>
     </div>
     <div>
@@ -2238,7 +2241,6 @@
         <li><a href="#products">All Products</a></li>
         <li><a href="#products" data-filter-link="Electronics">Electronics</a></li>
         <li><a href="#products" data-filter-link="Fashion">Fashion</a></li>
-        <li><a href="#products" data-filter-link="Grocery">Grocery</a></li>
         <li><a href="#products" data-filter-link="Home">Home &amp; Kitchen</a></li>
         <li><a href="#products" data-filter-link="Deals">Today's Deals</a></li>
       </ul>
@@ -2279,9 +2281,9 @@
     </div>
   </div>
   <div class="foot-disc">
-    <p><strong>Affiliate Disclosure:</strong> YugKart is a participant in affiliate programmes including Amazon Associates and other store programmes. Store links on this site are affiliate links — if you buy through one, YugKart may earn a small commission at <strong>no extra cost to you</strong>. Prices are indicative, estimated and last updated on the date shown (5 November 2026), and the final price, delivery charge and offer are always confirmed on the store's own page at checkout.</p>
-    <p><strong>Disclaimer:</strong> YugKart is a price comparison and information website only. We do not sell products, take payments, deliver orders or provide customer service for any store's order. All product names, logos and trademarks belong to their respective owners. Amazon, Flipkart, Meesho, Ajio, Myntra and Croma are trademarks of their owners; YugKart is not affiliated with or endorsed by them.</p>
-    <p><strong>Amazon Associates:</strong> As an Amazon Associate, YugKart earns from qualifying purchases made through Amazon links on this site.</p>
+    <p><strong>Affiliate Disclosure:</strong> Store links are affiliate links — if you buy, YugKart may earn a small commission at <strong>no extra cost to you</strong>. Prices are indicative; the final price is on the store's page at checkout.</p>
+    <p><strong>Disclaimer:</strong> YugKart only compares prices. We don't sell, take payments, deliver orders, or handle customer service. All names, logos and trademarks belong to their owners. Amazon, Flipkart, Meesho, Ajio, Myntra and Croma are trademarks of their owners; YugKart is not affiliated with or endorsed by them.</p>
+    
   </div>
   <div class="foot-legal">
     <a href="#/privacy">Privacy Policy</a>
@@ -2467,7 +2469,6 @@
   var CAT_STORES = {
     "Electronics": ["amazon","flipkart","croma","meesho"],
     "Fashion":     ["myntra","ajio","amazon","flipkart","meesho"],
-    "Grocery":     ["amazon","flipkart","meesho"],
     "Home":        ["amazon","flipkart","ajio","meesho"]
   };
   // Team-checked indicative price position per store (relative
@@ -2813,39 +2814,38 @@
 
   var POLICIES = {
     disclosure: { title:"Affiliate Disclosure", html:
-      "<p>YugKart is a price-comparison and shopping-guide website built by Yug Labs. The store links on this site are <strong>affiliate links</strong>, served through Amazon Associates, Cuelinks and the stores' own affiliate programmes.</p>" +
+      "<p>YugKart is a price-comparison and shopping-guide website built by Yug Labs. The store links on this site are <strong>affiliate links</strong>, served through Cuelinks and the stores' own affiliate programmes.</p>" +
       "<p>If you click a store link and buy on that store, YugKart may earn a small commission from the store. <strong>It never changes the price you pay</strong> — the commission comes out of the store's margin, not your pocket.</p>" +
-      "<p>Prices are checked by our team, not pulled from any store API — each one is an indicative estimate that can change at any time, and every product shows the date its prices were last checked. The price shown on the store when you check out is the final, correct price. Orders, payment, delivery, returns and warranties are handled entirely by the store you buy from; YugKart itself sells nothing and takes no payment.</p>" },
+      "<p>Prices are checked by hand, not pulled from any store feed — each one is an indicative estimate. The store's checkout price is final. Orders, payment, delivery and returns are the store's job — YugKart sells nothing.</p>" },
     privacy: { title:"Privacy Policy — Last updated 4 November 2026", html:
       "<p><strong>Who we are:</strong> YugKart, operated by Yug Labs, India. This policy explains what information is handled when you use this website.</p>" +
-      "<p><strong>What YugKart collects:</strong> this website has no user accounts, no sign-up, no checkout and no payment form. We do not ask for or store your name, address, phone, card or UPI details. Your shortlist and wishlist exist only in your browser for the current session and are cleared when the session ends.</p>" +
-      "<p><strong>Analytics &amp; advertising cookies:</strong> this site may use Google AdSense and analytics cookies. Google and its partners may use cookies to serve ads based on your visits to this and other websites. You can opt out of personalised advertising through Google Ad Settings, and block or delete cookies in your browser at any time.</p>" +
-      "<p><strong>Affiliate partners:</strong> when you click a store link, the store and its affiliate programme (such as Amazon Associates) may use cookies to attribute the purchase so the correct commission is paid. Those cookies are governed by that store's own privacy policy once you leave YugKart.</p>" +
-      "<p><strong>Your rights:</strong> because YugKart holds no account or personal profile for you, there is no personal data to access, correct or delete on our side. For data held by a store you bought from, contact that store directly.</p>" +
-      "<p><strong>Children:</strong> this site is intended for general shopping comparison and is not directed at children under 13.</p>" +
-      "<p><strong>Changes:</strong> if this policy changes, the updated version will be published here with a new last-updated date.</p>" },
+      "<p><strong>What YugKart collects:</strong> No accounts, no sign-up, no checkout, no payment form. No name, address, phone, card or UPI details asked or stored. Shortlist and wishlist live only in this browser session.</p>" +
+      "<p><strong>Analytics &amp; advertising cookies:</strong> this site may use AdSense and analytics cookies. Opt out in Google Ad Settings, or block cookies in your browser.</p>" +
+      "<p><strong>Affiliate partners:</strong> when you click a store link, the store and its affiliate programme may use cookies to attribute the purchase so the correct commission is paid. Those cookies are governed by that store's own privacy policy once you leave YugKart.</p>" +
+      "<p><strong>Your rights:</strong> because we hold no account or profile for you, there's no personal data to access or delete here. For a store's data, contact that store.</p>" +
+      "<p><strong>Children:</strong> not directed at children under 13.</p>" +
+      "<p><strong>Changes:</strong> policy changes will be published here with a new date.</p>" },
     cookies: { title:"Cookie Policy — Last updated 4 November 2026", html:
-      "<p>Cookies are small files stored in your browser. YugKart itself uses only essential, session-only handling for your shortlist and wishlist — these are not tracking cookies and disappear when the session ends.</p>" +
-      "<p><strong>Third-party cookies:</strong> Google AdSense / Google advertising partners and affiliate programmes (such as Amazon Associates) may set cookies when ads are shown or when you click a store link, to measure ads, prevent fraud and attribute affiliate purchases.</p>" +
-      "<p><strong>Your control:</strong> you can block, clear or limit cookies in your browser settings, and opt out of personalised ads in Google Ad Settings. Blocking cookies will not stop you from comparing prices on YugKart, but store checkout and affiliate attribution may work differently.</p>" },
+      "<p>YugKart uses only session-only handling for your shortlist and wishlist — not tracking cookies. They disappear when the session ends.</p>" +
+      "<p><strong>Third-party cookies:</strong> Google AdSense / advertising partners and affiliate programmes may set cookies when ads are shown or you click a store link — to measure ads, prevent fraud and attribute purchases.</p>" +
+      "<p><strong>Your control:</strong> block or clear cookies in your browser, or opt out of personalised ads in Google Ad Settings. Blocking cookies won't stop price comparison.</p>" },
     returns: { title:"Returns, Refunds & Cancellation Policy", html:
       "<p><strong>YugKart does not sell anything</strong>, so YugKart itself has no return, refund or cancellation process — there is no order, payment or delivery from YugKart to return or cancel.</p>" +
       "<p>Every purchase you make after clicking a YugKart link is an order with that store (Amazon, Flipkart, Meesho, Ajio, Myntra, Croma or another store). That store's return window, refund method, cancellation rules, delivery charges and warranty apply in full, exactly as if you had gone to that store directly.</p>" +
       "<p><strong>How to return or get a refund:</strong> open your order in that store's app or website, or contact that store's customer support, and keep its order confirmation and invoice. If a store refuses a return or refund, your consumer rights are against that store as the seller.</p>" },
     disclaimer: { title:"Disclaimer", html:
-      "<p>YugKart publishes price comparisons and buying guides for general information only. While price estimates are dated on the page, stores can change prices, offers, stock and delivery charges at any time without notice. We do not guarantee that a price shown here will be available when you reach the store.</p>" +
-      "<p>Product images are for identification and comparison. Specifications should be confirmed on the store's product page before buying. YugKart is not a seller, agent or representative of any store it compares, and mentioning a store or product is not an endorsement of that store.</p>" +
-      "<p>Nothing on this site is financial advice. Please check the total payable — including delivery and any bank or EMI charges — on the store's checkout before paying.</p>" },
+      "<p>Price comparisons and buying guides, for general information only. Prices are dated on the page; stores can change them any time. We don't guarantee a price will still be there when you reach the store.</p>" +
+      "<p>Images are for identification. Confirm specs on the store's product page before buying. YugKart is not a seller, agent or representative of any store. Mentioning a store is not an endorsement.</p>" +
+      "<p>Nothing here is financial advice. Check the total payable on the store's checkout before paying.</p>" },
     terms: { title:"Terms of Use — Last updated 4 November 2026", html:
-      "<p>By using YugKart you accept these terms. YugKart publishes price comparisons and buying guides for general information. We work to keep listings accurate, but we do not guarantee that a price, discount or stock status shown here will match the store at the moment you buy.</p>" +
-      "<p>Any purchase you make is a contract between you and the store you buy from, under that store's own terms — including its payment, delivery, return and warranty policies. Store names and trademarks belong to their respective owners; YugKart is not affiliated with or endorsed by them. Prices are estimates updated regularly; always confirm the final price on the store before paying.</p>" +
-      "<p><strong>Acceptable use:</strong> do not misuse this site, attempt to disrupt it, scrape it in a way that overloads it, or copy its original guides and content for republication without permission.</p>" +
-      "<p><strong>Liability:</strong> to the extent permitted by law, YugKart is not liable for a store's pricing, delivery, product quality, returns or refunds, as those are the store's responsibilities as seller.</p>" },
+      "<p>By using YugKart you accept these terms. Price comparisons and buying guides, for general information. Prices may differ on the store when you buy.</p>" +
+      "<p>Any purchase is between you and the store, under its own terms. Store names and trademarks belong to their owners; YugKart is not affiliated with or endorsed by them. Prices are estimates updated regularly; always confirm the final price on the store before paying.</p>" +
+      "<p><strong>Acceptable use:</strong> don't misuse, disrupt, or overload this site, or republish its guides without permission.</p>" +
+      "<p><strong>Liability:</strong> YugKart is not liable for a store's pricing, delivery, quality, returns or refunds — those are the seller's.</p>" },
     contact: { title:"Contact YugKart", html:
       "<p>YugKart is operated by <strong>Yug Labs</strong>, India.</p>" +
       "<p><strong>Use this contact route for:</strong> a wrong price or an ended deal, a broken store link, a correction to a buying guide, business or advertising enquiries, and privacy questions about this website.</p>" +
-      "<p>For an order, delivery, return or refund, please contact the store you bought from directly — only that store can see or change your order, as YugKart holds no order information.</p>" +
-      "<p>Reach YugKart via the Yug Labs official website and its official social / Fiverr channels listed there. We aim to fix verified price errors on the next price update.</p>" }
+      "<p>For an order, delivery, return or refund, please contact the store you bought from directly — only that store can see or change your order, as YugKart holds no order information.</p>" }
   };
   function openPolicy(key){
     var p = POLICIES[key]; if(!p) return;
@@ -2934,13 +2934,6 @@
     if(e.key==="Escape"){ closeDrawer(); closeProduct(); $("checkoutModal").classList.remove("show"); $("policyModal").classList.remove("show"); }
   });
 
-  // Delivery slots
-  $("slots").addEventListener("click", function(e){
-    var b=e.target.closest(".slot"); if(!b) return;
-    var slots=document.querySelectorAll("#slots .slot");
-    for(var i=0;i<slots.length;i++) slots[i].classList.toggle("on", slots[i]===b);
-    $("slotNote").textContent="Slot selected: "+b.textContent+" — grocery stores in the comparison show their own slot availability on their pages.";
-  });
 
   render(); renderCart(); renderStores();
   window.__YK = { PRODUCTS:PRODUCTS, STORES:STORES, STORE_LINKS:STORE_LINKS, offersFor:offersFor, bestOffer:bestOffer, compareEntries:compareEntries, freshBest:freshBest, renderCompare:renderCompare, byId:byId, inr:inr, offPct:offPct, compareBtnLabel:compareBtnLabel, stars:stars, openProduct:openProduct, openStoreLink:openStoreLink,
@@ -3002,11 +2995,6 @@
       '<h3>For music at home</h3><p>Driver quality and comfort matter more than cancellation. A wired option is worth having: no battery anxiety, and no delay in videos and games.</p>'+
       '<h3>The battery claim, translated</h3><p>Battery numbers are tested at half volume, so expect roughly two-thirds of the printed number in real use. If two models are otherwise close, pick the one with the longer warranty — headphones live a rough life in bags and pockets.</p>'+
       '<ul><li>Wear them (or check the return window) before judging comfort</li><li>Fold-flat designs travel better</li><li>Dual-device pairing helps if you switch between phone and laptop</li></ul>'},
-    grocery:{meta:"Grocery · 2 November 2026 · 3 min read",title:"Cut the weekly grocery bill without eating worse",img:"img-60985f0ac1.jpg",alt:"A basket of fresh vegetables",html:
-      '<p class="lead">Buy the basket, not the items — a planned seasonal basket almost always costs less per kilo than the same vegetables bought one by one, in a hurry, every day.</p>'+
-      '<h3>Let the season set the menu</h3><p>Seasonal produce is cheaper and fresher at the same time. Build the week\u2019s menu around what is in season instead of paying a premium for what is not.</p>'+
-      '<h3>One order, over the free-delivery line</h3><ul><li>Keep a running list through the week instead of ordering daily</li><li>Combine the list into one order that crosses the free-delivery threshold</li><li>Book the morning slot when freshness matters most</li></ul>'+
-      '<h3>Compare the basket, not the banana</h3><p>Single-item prices jump around to look attractive. The honest test is the total of your whole weekly basket on each store — which is why YugKart tracks the basket as one product in the comparison.</p>'},
     laptop:{meta:"Laptops · 1 November 2026 · 5 min read",title:"Laptop buying guide for students and work-from-home",img:"img-f940e3434a.jpg",alt:"A slim laptop on a desk",html:
       '<p class="lead">RAM and storage decide how fast a laptop feels far more than the processor badge on the sticker. Buy those two right, and the laptop stays useful for years.</p>'+
       '<h3>What 16 GB RAM and a 512 GB SSD actually buy you</h3><p>16 GB lets you keep a browser full of tabs, a document, a video call and a spreadsheet open together without the machine gasping. An SSD — at 512 GB — makes the laptop start in seconds and gives your files room to grow. Together they are the difference between a laptop that feels new in year three and one that does not.</p>'+
@@ -3088,7 +3076,7 @@
   var wrap = document.getElementById("spaWrap");
   var homeKids = [];
   for(var c=0;c<mainEl.children.length;c++){ if(mainEl.children[c]!==wrap) homeKids.push(mainEl.children[c]); }
-  var CATDESC = { Electronics:"Phones, headphones, smartwatches and laptops — the category where store prices differ the most.", Fashion:"Shoes, t-shirts and everyday clothing — check the comparison before you check the size chart.", Grocery:"The weekly basket and family produce box — compare the whole basket total, not single items.", Home:"Stand mixers and kitchen essentials — appliances carry some of the widest price gaps on YugKart." };
+  var CATDESC = { Electronics:"Phones, headphones, smartwatches and laptops — the category where store prices differ the most.", Fashion:"Shoes, t-shirts and everyday clothing — check the comparison before you check the size chart.", Home:"Stand mixers and kitchen essentials — appliances carry some of the widest price gaps on YugKart." };
   function esc(s){ return String(s); }
   function cardHTML(p){
     var fb = YK.freshBest(p); var offers = YK.offersFor(p);
