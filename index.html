@@ -971,9 +971,9 @@
   .main-nav a.nav-deal{color:var(--accent-dark)}
   .main-nav a.nav-deal.on{background:var(--accent);color:#fff}
   .spa-wrap{display:none}
-  .spa-wrap.show{display:block;animation:ykFadeUp .4s ease both}
+  .spa-wrap.show{display:block;animation:ykFadeUp .15s ease both}
   .spa-page{display:none}
-  .spa-page.active{display:block;animation:ykFadeUp .38s ease both}
+  .spa-page.active{display:block;animation:ykFadeUp .15s ease both}
   .crumb{font-size:.83rem;color:var(--muted);margin:1.1rem 0 .6rem;display:flex;gap:.45rem;flex-wrap:wrap;align-items:center}
   .crumb a{color:var(--brand);font-weight:700;text-decoration:none}
   .crumb a:hover{text-decoration:underline}
@@ -1732,8 +1732,8 @@
 <body>
 
 <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack">
-  <span><b>New products</b> coming soon</span><span>Real products · <b>hand-checked</b> prices</span><span><b>More stores</b> being added soon</span><span><b>No payment on YugKart</b> — you buy on the store</span><span>New on the blog: <b>6 buying guides published</b></span>
-  <span><b>New products</b> coming soon</span><span>Real products · <b>hand-checked</b> prices</span><span><b>More stores</b> being added soon</span><span><b>No payment on YugKart</b> — you buy on the store</span><span>New on the blog: <b>6 buying guides published</b></span>
+  <span><b>New products</b> coming soon</span><span>Prices checked by hand, <b>dated on the page</b></span><span><b>More stores</b> being added soon</span><span><b>No payment on YugKart</b> — you buy on the store</span><span>New on the blog: <b>5 buying guides published</b></span>
+  <span><b>New products</b> coming soon</span><span>Prices checked by hand, <b>dated on the page</b></span><span><b>More stores</b> being added soon</span><span><b>No payment on YugKart</b> — you buy on the store</span><span>New on the blog: <b>5 buying guides published</b></span>
 </div></div>
 
 <header class="site">
@@ -1883,8 +1883,8 @@
 
     <div class="grid" id="grid"></div>
     <div class="empty" id="emptyState">
-      <h3>No products match that search</h3>
-      <p>Try a different word — for example “phone”, “shoes” or “jeans” — or clear the category filter.</p>
+      <h3 id="emptyTitle">No products yet</h3>
+      <p id="emptyText">We are adding hand-checked products — each price is checked by hand and dated on the page. The first products will appear here as soon as they are ready.</p>
       <button class="btn btn-accent" id="resetFilters" type="button">Show everything</button>
     </div>
   </section>
@@ -2612,6 +2612,17 @@
       var dl = card.querySelector(".deal-link"); if(dl && dl.tagName === "BUTTON") dl.addEventListener("click", function(){ openStoreLink(p.id, bestOffer(p).key); });
       grid.appendChild(card);
     });
+    if(list.length===0){
+      if(PRODUCTS.length===0){
+        $("emptyTitle").textContent="No products yet";
+        $("emptyText").textContent="We are adding hand-checked products — each price is checked by hand and dated on the page. The first products will appear here as soon as they are ready.";
+        $("resetFilters").style.display="none";
+      } else {
+        $("emptyTitle").textContent="No products match that search";
+        $("emptyText").textContent="Try a different word — for example “phone”, “shoes” or “jeans” — or clear the category filter.";
+        $("resetFilters").style.display="";
+      }
+    }
     $("emptyState").classList.toggle("show", list.length===0);
     $("resultCount").textContent = list.length + (list.length===1 ? " product" : " products");
     updateCounts();
@@ -3034,8 +3045,9 @@
     var freshCount = YK.compareEntries(p).filter(function(e){ return e.state==="priced"; }).length;
     return '<div class="pic"><img src="'+p.img+'" alt="'+p.alt+'" loading="lazy" />'+(p.deal?'<span class="off">'+YK.offPct(p)+'% OFF</span>':'')+(p.badge?'<span class="badge">'+p.badge+'</span>':'')+'</div><div class="body"><span class="cat">'+p.cat+'</span><h3>'+p.name+'</h3><div class="sub">'+p.sub+'</div><div class="stars">'+YK.stars(p.rating)+' <span>'+p.rating.toFixed(1)+' ('+p.reviews.toLocaleString("en-IN")+')</span></div><div class="price"><span class="now">'+(fb?YK.inr(fb.price):'Check live price')+'</span>'+(p.mrp?'<span class="mrp">'+YK.inr(p.mrp)+'</span><span class="pct">'+YK.offPct(p)+'% off</span>':'')+'</div><div class="from-line">'+(fb?(freshCount===1?'Price checked on <strong>'+fb.store.name+'</strong> — more stores coming soon':'Lowest checked of <strong>'+freshCount+' priced stores</strong> — best at <span class="best-store">'+fb.store.name+'</span>'):'Compared across <strong>'+(offers.length===1?'1 store':offers.length+' stores')+'</strong> — open to compare')+'</div><div class="delivery-note">'+p.fast+'</div><div class="actions"><button class="compare-btn" type="button">'+YK.compareBtnLabel(p)+'</button><button class="view" type="button">Full page</button></div></div>';
   }
-  function fillGrid(el, list){
+  function fillGrid(el, list, emptyHtml){
     if(!el) return; el.innerHTML="";
+    if(!list.length && emptyHtml){ el.innerHTML='<div class="empty show" style="grid-column:1/-1">'+emptyHtml+'</div>'; return; }
     list.forEach(function(p){
       var card=document.createElement("article"); card.className="card"; card.innerHTML=cardHTML(p);
       card.querySelector(".compare-btn").addEventListener("click",function(){ YK.openProduct(p.id); });
@@ -3052,8 +3064,8 @@
     else l.sort(function(a,b){return b.reviews-a.reviews;});
     return l;
   }
-  function renderShop(){ var mode=(document.getElementById("shopSort")||{}).value||"pop"; fillGrid(document.getElementById("shopGridPage"), sorted(YK.PRODUCTS, mode)); var n=document.getElementById("shopCount"); if(n) n.textContent=YK.PRODUCTS.length+" products"; }
-  function renderDeals(){ fillGrid(document.getElementById("dealsGridPage"), sorted(YK.PRODUCTS.filter(function(p){return p.deal;}), "off")); }
+  function renderShop(){ var mode=(document.getElementById("shopSort")||{}).value||"pop"; fillGrid(document.getElementById("shopGridPage"), sorted(YK.PRODUCTS, mode), '<h3>No products yet</h3><p>We are adding hand-checked products — each price is checked by hand and dated on the page. The first products will appear here as soon as they are ready.</p>'); var n=document.getElementById("shopCount"); if(n) n.textContent=YK.PRODUCTS.length+" products"; }
+  function renderDeals(){ fillGrid(document.getElementById("dealsGridPage"), sorted(YK.PRODUCTS.filter(function(p){return p.deal;}), "off"), '<h3>No deals right now</h3><p>Deals are checked by hand against every other store. When there is a deal worth listing, it appears here.</p>'); }
   function renderStoresPage(){
     var g=document.getElementById("storesPageGrid"); if(!g) return; g.innerHTML="";
     YK.STORES.forEach(function(s){
@@ -3068,16 +3080,17 @@
     var s=YK.storeByKey(key); if(!s){ location.hash="#/stores"; return; }
     document.getElementById("storeCrumb").textContent=s.name;
     document.getElementById("storeTitle").textContent=s.name+" picks";
-    document.getElementById("storeDesc").textContent=s.note+" · Every product below is tracked on "+s.name+" — open one to compare its "+s.name+" price against every other store.";
     var list=[];
     YK.PRODUCTS.forEach(function(p){ YK.offersFor(p).forEach(function(o){ if(o.key===key) list.push(p); }); });
-    fillGrid(document.getElementById("storeDetailGrid"), sorted(list,"pop"));
+    document.getElementById("storeDesc").textContent=list.length ? (s.note+" · Every product below is tracked on "+s.name+" — open one to compare its "+s.name+" price against every other store.") : (s.note+" · No products tracked on "+s.name+" yet — check back soon.");
+    fillGrid(document.getElementById("storeDetailGrid"), sorted(list,"pop"), '<h3>No products tracked on '+s.name+' yet</h3><p>Check back soon — or read the buying guides while products arrive.</p>');
   }
   function renderCategory(cat){
     document.getElementById("catCrumb").textContent = cat==="Home" ? "Home & Kitchen" : cat;
     document.getElementById("catTitle").textContent = cat==="Home" ? "Home & Kitchen" : cat;
     document.getElementById("catDesc").textContent = CATDESC[cat]||"";
-    fillGrid(document.getElementById("catGridPage"), sorted(YK.PRODUCTS.filter(function(p){return p.cat===cat;}),"pop"));
+    var catName = cat==="Home" ? "Home & Kitchen" : cat;
+    fillGrid(document.getElementById("catGridPage"), sorted(YK.PRODUCTS.filter(function(p){return p.cat===cat;}),"pop"), '<h3>No products in '+catName+' yet</h3><p>Check back soon — or read the buying guides while products arrive.</p>');
   }
   var currentProduct=null;
   var stickyIO=null;
