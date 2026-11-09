@@ -2374,7 +2374,14 @@
 (function(){
   "use strict";
   var CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>';
-  var PRODUCTS = [];
+  var PRODUCTS = [
+    {id:1, name:"POCO M7 Pro 5G", sub:"Smartphone · 6 GB RAM · 128 GB storage", cat:"Electronics", price:14999, rating:4.3, reviews:38576, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/h/g/z/-resized-original-imah7jsp8bh3s4rv.jpeg?q=90", alt:"POCO M7 Pro 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"POCO M7 Pro 5G with 6 GB RAM and 128 GB storage. ₹14,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["6 GB RAM · 128 GB storage", "₹14,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["poco m7 pro", "poco 5g phone", "5g smartphone under 15000"], offers:{flipkart:14999, shopsy:14999}, checkedISO:"2026-11-10T00:05:00+05:30", checkedLabel:"10 Nov, 12:05 AM"},
+    {id:2, name:"Samsung Galaxy F16 5G", sub:"Smartphone · 6 GB RAM · 128 GB storage", cat:"Electronics", price:13999, rating:4.2, reviews:10418, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/g/d/p/-resized-original-imahcre2gqhfqgd8.jpeg?q=90", alt:"Samsung Galaxy F16 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Samsung Galaxy F16 5G with 6 GB RAM and 128 GB storage. ₹13,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["6 GB RAM · 128 GB storage", "₹13,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["galaxy f16", "samsung 5g phone", "5g smartphone under 15000"], offers:{flipkart:13999, shopsy:13999}, checkedISO:"2026-11-10T00:05:00+05:30", checkedLabel:"10 Nov, 12:05 AM"},
+    {id:3, name:"Realme P3x 5G", sub:"Smartphone · 6 GB RAM · 128 GB storage", cat:"Electronics", price:12999, rating:4.3, reviews:60167, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/j/n/1/-resized-original-imah9gtmya9qhqse.jpeg?q=90", alt:"Realme P3x 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Realme P3x 5G with 6 GB RAM and 128 GB storage. ₹12,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["6 GB RAM · 128 GB storage", "₹12,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["realme p3x", "realme 5g phone", "5g smartphone under 15000"], offers:{flipkart:12999, shopsy:12999}, checkedISO:"2026-11-10T00:05:00+05:30", checkedLabel:"10 Nov, 12:05 AM"},
+    {id:4, name:"POCO X7 5G", sub:"Smartphone · 8 GB RAM · 128 GB storage", cat:"Electronics", price:17999, rating:4.3, reviews:29047, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/r/g/v/-resized-original-imahbzrrxtsbwggz.jpeg?q=90", alt:"POCO X7 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"POCO X7 5G with 8 GB RAM and 128 GB storage. ₹17,999 checked on Shopsy; Flipkart listing also live — price shown there.", hl:["8 GB RAM · 128 GB storage", "₹17,999 checked on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["poco x7", "poco 5g phone", "5g smartphone under 20000"], offers:{flipkart:17999, shopsy:17999}, checkedISO:"2026-11-10T00:05:00+05:30", checkedLabel:"10 Nov, 12:05 AM"},
+    {id:5, name:"Redmi Note 14 5G", sub:"Smartphone · 8 GB RAM · 128 GB storage", cat:"Electronics", price:14799, rating:4.2, reviews:4821, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/i/6/6/note-14-5g-24094rad4i-mzb0icqin-redmi-resized-original-imah9gtuwqmwzxwm.jpeg?q=90", alt:"Redmi Note 14 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Redmi Note 14 5G with 8 GB RAM and 128 GB storage. Same phone checked at ₹14,799 on Shopsy and ₹20,999 on JioMart — a ₹6,200 gap. Flipkart listing also live.", hl:["8 GB RAM · 128 GB storage", "₹14,799 on Shopsy — lowest checked", "₹20,999 on JioMart — compare before you buy"], tags:["redmi note 14", "redmi 5g phone", "note 14 5g"], offers:{flipkart:14799, shopsy:14799, jiomart:20999}, checkedISO:"2026-11-10T00:05:00+05:30", checkedLabel:"10 Nov, 12:05 AM"},
+    {id:6, name:"Samsung Galaxy A36 5G", sub:"Smartphone · 8 GB RAM · 256 GB storage", cat:"Electronics", price:28499, rating:4.4, reviews:20460, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/v/q/g/-original-imahrjshzbzbbfw9.jpeg?q=90", alt:"Samsung Galaxy A36 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Samsung Galaxy A36 5G with 8 GB RAM and 256 GB storage. ₹28,499 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["8 GB RAM · 256 GB storage", "₹28,499 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["galaxy a36", "samsung 5g phone", "samsung a series"], offers:{flipkart:28499, shopsy:28499}, checkedISO:"2026-11-10T00:05:00+05:30", checkedLabel:"10 Nov, 12:05 AM"}
+  ];
 
   /* ================================================================
      Affiliate links — configured here.
@@ -2410,12 +2417,21 @@
   var STORES = [
     {key:"amazon",   name:"Amazon",   note:"Prime delivery options · store returns apply"},
     {key:"flipkart", name:"Flipkart", note:"Bank offers common · store returns apply"},
+    {key:"shopsy",   name:"Shopsy",   note:"Flipkart's value platform · store returns apply"},
+    {key:"jiomart",  name:"JioMart",  note:"Reliance Retail · store returns apply"},
     {key:"meesho",   name:"Meesho",   note:"Budget picks · delivery time varies"},
     {key:"ajio",     name:"Ajio",     note:"Fashion & home focus · store returns apply"},
     {key:"myntra",   name:"Myntra",   note:"Fashion focus · easy size exchange"},
     {key:"croma",    name:"Croma",    note:"Electronics focus · in-store pickup options"}
   ];
-  var STORE_LINKS = {};
+  var STORE_LINKS = {
+    1: { flipkart:"https://fktr.in/0s4fIBs", shopsy:"https://bitli.in/DVf47GH" },
+    2: { flipkart:"https://fktr.in/j2vp8hl", shopsy:"https://bitli.in/RaZH4TD" },
+    3: { flipkart:"https://fktr.in/pkx50Da", shopsy:"https://bitli.in/NJweqMN" },
+    4: { flipkart:"https://fktr.in/JuM7X2r", shopsy:"https://bitli.in/9mMn2No" },
+    5: { flipkart:"https://fktr.in/3cCHiz7", shopsy:"https://bitli.in/ZxmY3Gk", jiomart:"https://bitli.in/5hn506O" },
+    6: { flipkart:"https://fktr.in/jp7zpU9", shopsy:"https://bitli.in/ao9mYwc" }
+  };
   // Which stores carry each category
   var CAT_STORES = {
     "Electronics": ["amazon","flipkart","croma","meesho"],
