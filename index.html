@@ -299,6 +299,10 @@
   .order-ok code{background:var(--surface2);padding:.2rem .6rem;border-radius:6px;font-weight:700}
 
   .toast{position:fixed;left:50%;bottom:1.2rem;transform:translate(-50%,140%);background:var(--ink);color:var(--bg);padding:.75rem 1.2rem;border-radius:999px;font-weight:600;font-size:.92rem;z-index:120;transition:transform .25s ease;box-shadow:var(--shadow);max-width:92vw;text-align:center}
+  .cookie-bar{position:fixed;left:50%;bottom:1rem;transform:translate(-50%,160%);background:#131315;color:#fff;padding:.7rem .7rem .7rem 1rem;border-radius:14px;font-size:.88rem;font-weight:600;line-height:1.45;z-index:130;transition:transform .25s ease;box-shadow:var(--shadow);max-width:94vw;width:max-content;display:flex;gap:.8rem;align-items:center}
+  .cookie-bar.show{transform:translate(-50%,0)}
+  .cookie-bar a{color:#ffd9ae}
+  .cookie-bar button{background:#f59e0b;color:#111827;border:0;border-radius:999px;padding:.45rem .95rem;font-weight:800;font-size:.88rem;cursor:pointer;white-space:nowrap}
   .toast.show{transform:translate(-50%,0)}
 
   @media (max-width:1020px){ .grid{grid-template-columns:repeat(3,1fr)} .foot-in{grid-template-columns:1fr 1fr} .tiles{grid-template-columns:repeat(2,1fr)} .project-grid{grid-template-columns:1fr} }
@@ -1811,13 +1815,13 @@
 
   <!-- Sliding store marquee -->
   <div class="marquee" aria-label="Stores compared on YugKart"><div class="marquee-track" id="marqueeTrack">
-    <span><i>A</i> Amazon <small>electronics · everything</small></span><span><i>F</i> Flipkart <small>bank offers</small></span><span><i>M</i> Meesho <small>budget picks</small></span><span><i>A</i> Ajio <small>fashion &amp; home</small></span><span><i>M</i> Myntra <small>fashion first</small></span><span><i>C</i> Croma <small>electronics</small></span>
-    <span><i>A</i> Amazon <small>electronics · everything</small></span><span><i>F</i> Flipkart <small>bank offers</small></span><span><i>M</i> Meesho <small>budget picks</small></span><span><i>A</i> Ajio <small>fashion &amp; home</small></span><span><i>M</i> Myntra <small>fashion first</small></span><span><i>C</i> Croma <small>electronics</small></span>
+    <span><i>A</i> Amazon <small>electronics · everything</small></span><span><i>F</i> Flipkart <small>bank offers</small></span><span><i>S</i> Shopsy <small>from ₹12,999</small></span><span><i>J</i> JioMart <small>from ₹20,999</small></span><span><i>M</i> Meesho <small>budget picks</small></span><span><i>A</i> Ajio <small>fashion &amp; home</small></span><span><i>M</i> Myntra <small>fashion first</small></span><span><i>C</i> Croma <small>electronics</small></span>
+    <span><i>A</i> Amazon <small>electronics · everything</small></span><span><i>F</i> Flipkart <small>bank offers</small></span><span><i>S</i> Shopsy <small>from ₹12,999</small></span><span><i>J</i> JioMart <small>from ₹20,999</small></span><span><i>M</i> Meesho <small>budget picks</small></span><span><i>A</i> Ajio <small>fashion &amp; home</small></span><span><i>M</i> Myntra <small>fashion first</small></span><span><i>C</i> Croma <small>electronics</small></span>
   </div></div>
 
   <!-- At a glance -->
   <section class="stats" aria-label="YugKart at a glance">
-    <div class="stat"><strong>6</strong><span>stores compared</span></div>
+    <div class="stat"><strong>8</strong><span>stores compared</span></div>
     <div class="stat"><strong>5</strong><span>buying guides</span></div>
   </section>
 
@@ -2025,10 +2029,10 @@
       <nav class="crumb"><a href="#">Home</a> › <span>Categories</span></nav>
       <div class="page-hero"><span class="tag">Categories</span><h1>Shop by category.</h1><p>Three categories. Open one to see its products, already compared.</p></div>
       <div class="cat-tiles">
-        <article class="page-card"><div class="pc-ico">E</div><h3>Electronics</h3><p>Phones, headphones, smartwatches and laptops — compared on Amazon, Flipkart, Croma and Meesho. Prices vary the most here, so comparison saves the most.</p><p style="margin-top:.7rem"><a href="#/category/Electronics">Open Electronics →</a> · <a href="#/blog" data-blog-link="phone">Phone guide</a></p></article>
-        <article class="page-card"><div class="pc-ico">F</div><h3>Fashion</h3><p>Shoes, t-shirts and everyday clothing — compared on Myntra, Ajio, Amazon, Flipkart and Meesho. Check size exchange terms on the store before ordering.</p><p style="margin-top:.7rem"><a href="#/category/Fashion">Open Fashion →</a> · <a href="#/blog" data-blog-link="shoes">Shoe guide</a></p></article>
+        <article class="page-card"><div class="pc-ico">E</div><h3>Electronics</h3><p>Phones, headphones, smartwatches and laptops — 6 products live, prices checked by hand. Prices vary the most here, so comparison saves the most.</p><p style="margin-top:.7rem"><a href="#/category/Electronics">Open Electronics →</a> · <a href="#/blog" data-blog-link="phone">Phone guide</a></p></article>
+        <article class="page-card"><div class="pc-ico">F</div><h3>Fashion</h3><p>No products listed yet — fashion prices are checked by hand first, so this category opens once its first product is ready. The shoe guide below is ready to read.</p><p style="margin-top:.7rem"><a href="#/category/Fashion">Open Fashion →</a> · <a href="#/blog" data-blog-link="shoes">Shoe guide</a></p></article>
         
-        <article class="page-card"><div class="pc-ico">H</div><h3>Home &amp; Kitchen</h3><p>Stand mixers and kitchen essentials — compared on Amazon, Flipkart, Ajio and Meesho. Kitchen appliances carry some of the widest price gaps.</p><p style="margin-top:.7rem"><a href="#/category/Home">Open Home &amp; Kitchen →</a> · <a href="#/blog" data-blog-link="mixer">Mixer guide</a></p></article>
+        <article class="page-card"><div class="pc-ico">H</div><h3>Home &amp; Kitchen</h3><p>No products listed yet — kitchen prices are checked by hand first, so this category opens once its first product is ready. The mixer guide below is ready to read.</p><p style="margin-top:.7rem"><a href="#/category/Home">Open Home &amp; Kitchen →</a> · <a href="#/blog" data-blog-link="mixer">Mixer guide</a></p></article>
       </div>
     </section>
 
@@ -2373,6 +2377,7 @@
 <button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="cookie-bar" id="cookieBar" role="dialog" aria-label="Cookie notice"><span>YugKart uses cookies for ads and affiliate links — see the <a href="#/cookies">Cookie Policy</a>.</span><button type="button" id="cookieOk">Got it</button></div>
 
 <script>
 (function(){
@@ -2639,9 +2644,13 @@
         $("emptyTitle").textContent="No products yet";
         $("emptyText").textContent="We are adding hand-checked products — each price is checked by hand and dated on the page. The first products will appear here as soon as they are ready.";
         $("resetFilters").style.display="none";
-      } else {
+      } else if(state.query){
         $("emptyTitle").textContent="No products match that search";
-        $("emptyText").textContent="Try a different word — for example “phone”, “shoes” or “jeans” — or clear the category filter.";
+        $("emptyText").textContent="Try a different word — for example “phone” — or clear the search.";
+        $("resetFilters").style.display="";
+      } else {
+        $("emptyTitle").textContent="No products in this category yet";
+        $("emptyText").textContent="Products appear here only after each price is checked by hand, so this category is still empty. Clear the filter to see everything live.";
         $("resetFilters").style.display="";
       }
     }
@@ -2846,11 +2855,14 @@
     if(b.hasAttribute("data-goto-stores")){ $("stores").scrollIntoView({behavior:"smooth"}); return; }
     if(b.hasAttribute("data-goto-blog")){ $("blog").scrollIntoView({behavior:"smooth"}); return; }
     if(b.hasAttribute("data-goto-faq")){ $("faq").scrollIntoView({behavior:"smooth"}); return; }
-    setCategory(b.getAttribute("data-cat"));
+    var cat=b.getAttribute("data-cat");
+    if(cat==="Deals"){ location.hash="#/deals"; return; }
+    if(cat && cat!=="all"){ location.hash="#/category/"+encodeURIComponent(cat); return; }
+    setCategory("all");
   });
   var tiles=document.querySelectorAll(".tile");
   for(var ti=0; ti<tiles.length; ti++){
-    tiles[ti].addEventListener("click", function(){ setCategory(this.getAttribute("data-goto")); });
+    tiles[ti].addEventListener("click", function(){ location.hash="#/category/"+encodeURIComponent(this.getAttribute("data-goto")); });
   }
   $("searchForm").addEventListener("submit", function(e){
     e.preventDefault();
@@ -3106,15 +3118,16 @@
     document.getElementById("storeTitle").textContent=s.name+" picks";
     var list=[];
     YK.PRODUCTS.forEach(function(p){ YK.offersFor(p).forEach(function(o){ if(o.key===key) list.push(p); }); });
-    document.getElementById("storeDesc").textContent=list.length ? (s.key==="flipkart" ? (s.note+" · Every product below is listed on Flipkart — the price is shown on Flipkart. Open one to compare the hand-checked prices from other stores.") : (s.note+" · Every product below is tracked on "+s.name+" — open one to compare its "+s.name+" price against every other store.")) : (s.note+" · No products tracked on "+s.name+" yet — check back soon.");
+    document.getElementById("storeDesc").textContent=list.length ? (s.key==="flipkart" ? (s.note+" · Every product below is listed on Flipkart, but Flipkart shows its price only on its own page — the prices you see here are hand-checked on Shopsy. Open a product to compare.") : (s.note+" · Every product below is tracked on "+s.name+" — open one to compare its "+s.name+" price against every other store.")) : (s.note+" · No products tracked on "+s.name+" yet — check back soon.");
     fillGrid(document.getElementById("storeDetailGrid"), sorted(list,"pop"), '<h3>No products tracked on '+s.name+' yet</h3><p>Check back soon — or read the buying guides while products arrive.</p>');
   }
   function renderCategory(cat){
     document.getElementById("catCrumb").textContent = cat==="Home" ? "Home & Kitchen" : cat;
     document.getElementById("catTitle").textContent = cat==="Home" ? "Home & Kitchen" : cat;
-    document.getElementById("catDesc").textContent = CATDESC[cat]||"";
     var catName = cat==="Home" ? "Home & Kitchen" : cat;
-    fillGrid(document.getElementById("catGridPage"), sorted(YK.PRODUCTS.filter(function(p){return p.cat===cat;}),"pop"), '<h3>No products in '+catName+' yet</h3><p>Check back soon — or read the buying guides while products arrive.</p>');
+    var catList = YK.PRODUCTS.filter(function(p){return p.cat===cat;});
+    document.getElementById("catDesc").textContent = catList.length ? (CATDESC[cat]||"") : ("No products in "+catName+" yet — every price is checked by hand, so this category opens once its first product is ready. Check back soon, or read the buying guides meanwhile.");
+    fillGrid(document.getElementById("catGridPage"), sorted(catList,"pop"), '<h3>No products in '+catName+' yet</h3><p>Check back soon — or read the buying guides while products arrive.</p>');
   }
   var currentProduct=null;
   var stickyIO=null;
@@ -3372,6 +3385,24 @@
         s.src = (document.location.protocol == 'https:' ? 'https://cdn0.cuelinks.com/js/' : 'http://cdn0.cuelinks.com/js/')  + 'cuelinksv2.js';
         document.getElementsByTagName('body')[0].appendChild(s);
       }());
+</script>
+<script>
+(function(){
+  "use strict";
+  /* Cookie notice: shown once until dismissed (choice kept in this browser only). */
+  try{
+    if(window.localStorage && !localStorage.getItem("yk-cookie-ok")){
+      var bar=document.getElementById("cookieBar");
+      if(bar){
+        bar.classList.add("show");
+        document.getElementById("cookieOk").addEventListener("click", function(){
+          try{ localStorage.setItem("yk-cookie-ok","1"); }catch(e){}
+          bar.classList.remove("show");
+        });
+      }
+    }
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
