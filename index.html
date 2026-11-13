@@ -1732,6 +1732,15 @@
     .blog-card .b-body{padding:18px}
     #grid .card .body{padding:12px}
   }
+
+  /* v3.3: hero side card — fills the empty right half of the hero grid */
+  .slide-side{margin:2rem 1.8rem 2rem 0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:1.5rem 1.6rem;display:flex;flex-direction:column;justify-content:center;gap:.45rem;color:#fff}
+  .slide-side .side-tag{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ffd9ae}
+  .slide-side strong{font-size:1.25rem}
+  .slide-side .side-price{font-size:2.1rem;font-weight:800;line-height:1}
+  .slide-side .side-store{font-size:.88rem;color:#cfeadd}
+  .slide-side .side-link{color:#fff;font-weight:700;margin-top:.3rem}
+  @media(max-width:720px){.slide-side{margin:0 1.2rem 1.4rem}}
 </style>
 </head>
 <body>
@@ -1810,6 +1819,13 @@
             <a class="btn btn-ghost" href="#/deals">Today's Deals</a>
           </div>
         </div>
+        <div class="slide-side" aria-label="Lowest price today">
+          <span class="side-tag">Lowest price today</span>
+          <strong>Realme P3x 5G</strong>
+          <span class="side-price">₹12,999</span>
+          <span class="side-store">on Shopsy · Checked 13 Nov, 10:06 AM</span>
+          <a class="side-link" href="#/product/3">See the comparison →</a>
+        </div>
       </article>
     </div>
   </section>
@@ -1825,7 +1841,7 @@
     <div class="stat"><strong>8</strong><span>stores compared</span></div>
     <div class="stat"><strong>6</strong><span>products live</span></div>
     <div class="stat"><strong>5</strong><span>buying guides</span></div>
-    <div class="stat"><strong>12 Nov 2026</strong><span>prices last checked</span></div>
+    <div class="stat"><strong>13 Nov 2026</strong><span>prices last checked</span></div>
   </section>
 
   <!-- How comparison works -->
@@ -2208,6 +2224,12 @@
         <article class="page-card"><h3>Guides &amp; Company</h3><ul><li><a href="#/blog">Blog &amp; Buying Guides</a></li><li><a href="#/about">About YugKart</a></li><li><a href="#/how-we-check">How We Check Prices</a></li><li><a href="#/faq">FAQ</a></li><li><a href="#/contact">Contact</a></li></ul><h3 style="margin-top:1rem">Policies</h3><ul><li><a href="#/privacy">Privacy Policy</a></li><li><a href="#/terms">Terms of Use</a></li><li><a href="#/disclosure">Affiliate Disclosure</a></li><li><a href="#/cookies">Cookie Policy</a></li><li><a href="#/returns">Returns &amp; Refunds</a></li><li><a href="#/disclaimer">Disclaimer</a></li></ul></article>
       </div>
     </section>
+    <!-- 404 -->
+    <section class="spa-page" id="page-notfound" aria-label="Page not found">
+      <nav class="crumb"><a href="#">Home</a> › <span>Page not found</span></nav>
+      <div class="page-hero"><span class="tag">404</span><h1>That page isn't on YugKart.</h1><p>The link may be old, or the page may have moved. Try one of these instead.</p></div>
+      <div class="prose"><p><a href="#">Back to home</a> · <a href="#/shop">Shop — all products</a> · <a href="#/sitemap">Sitemap</a></p></div>
+    </section>
 
   </div>
 </main>
@@ -2288,10 +2310,10 @@
 
 <!-- Cart drawer -->
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+<aside class="drawer" id="drawer" aria-label="Shortlist" aria-hidden="true">
   <header>
     <h2>Your Shortlist <span id="drawerCount"></span></h2>
-    <button class="x" id="closeDrawer" type="button" aria-label="Close cart">✕</button>
+    <button class="x" id="closeDrawer" type="button" aria-label="Close shortlist">✕</button>
   </header>
   <div class="ship-progress" id="shipProgress" hidden>
     <span id="shipMsg"></span>
@@ -2326,7 +2348,6 @@
     <p class="trust-note">Prices are indicative estimates. Final price is confirmed on the store. YugKart has no checkout. Some links may be affiliate links.</p>
 
     <div class="pm-actions">
-      <div class="qty"><button type="button" id="pmDec" aria-label="Decrease quantity">−</button><span id="pmQty">1</span><button type="button" id="pmInc" aria-label="Increase quantity">+</button></div>
       <button class="btn" id="pmWish" type="button" style="border:1.5px solid var(--primary);background:transparent;color:var(--primary)">♡ Wishlist</button>
       <button class="btn btn-accent" id="pmAdd" type="button" style="flex:1">+ Shortlist</button>
       <button class="btn" id="pmClose" type="button" style="border:1px solid var(--line);background:var(--surface);color:var(--ink)">Close</button>
@@ -2380,19 +2401,19 @@
 <button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<div class="cookie-bar" id="cookieBar" role="dialog" aria-label="Cookie notice"><span>YugKart uses cookies for ads and affiliate links — see the <a href="#/cookies">Cookie Policy</a>.</span><button type="button" id="cookieOk">Got it</button></div>
+<div class="cookie-bar" id="cookieBar" role="dialog" aria-label="Cookie notice"><span>YugKart remembers your shortlist and wishlist in this browser. Ads and store links may set their own cookies — see the <a href="#/cookies">Cookie Policy</a>.</span><button type="button" id="cookieOk">Got it</button></div>
 
 <script>
 (function(){
   "use strict";
   var CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>';
   var PRODUCTS = [
-    {id:1, name:"POCO M7 Pro 5G", sub:"Smartphone · 6 GB RAM · 128 GB storage", cat:"Electronics", price:14999, rating:4.3, reviews:38576, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/h/g/z/-resized-original-imah7jsp8bh3s4rv.jpeg?q=90", alt:"POCO M7 Pro 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"POCO M7 Pro 5G with 6 GB RAM and 128 GB storage. ₹14,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["6 GB RAM · 128 GB storage", "₹14,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["poco m7 pro", "poco 5g phone", "5g smartphone under 15000"], offers:{flipkart:14999, shopsy:14999}, checkedISO:"2026-11-12T09:54:00+05:30", checkedLabel:"12 Nov, 9:54 AM"},
-    {id:2, name:"Samsung Galaxy F16 5G", sub:"Smartphone · 6 GB RAM · 128 GB storage", cat:"Electronics", price:13999, rating:4.2, reviews:10418, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/g/d/p/-resized-original-imahcre2gqhfqgd8.jpeg?q=90", alt:"Samsung Galaxy F16 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Samsung Galaxy F16 5G with 6 GB RAM and 128 GB storage. ₹13,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["6 GB RAM · 128 GB storage", "₹13,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["galaxy f16", "samsung 5g phone", "5g smartphone under 15000"], offers:{flipkart:13999, shopsy:13999}, checkedISO:"2026-11-12T09:54:00+05:30", checkedLabel:"12 Nov, 9:54 AM"},
-    {id:3, name:"Realme P3x 5G", sub:"Smartphone · 6 GB RAM · 128 GB storage", cat:"Electronics", price:12999, rating:4.3, reviews:60167, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/j/n/1/-resized-original-imah9gtmya9qhqse.jpeg?q=90", alt:"Realme P3x 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Realme P3x 5G with 6 GB RAM and 128 GB storage. ₹12,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["6 GB RAM · 128 GB storage", "₹12,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["realme p3x", "realme 5g phone", "5g smartphone under 15000"], offers:{flipkart:12999, shopsy:12999}, checkedISO:"2026-11-12T09:54:00+05:30", checkedLabel:"12 Nov, 9:54 AM"},
-    {id:4, name:"POCO X7 5G", sub:"Smartphone · 8 GB RAM · 128 GB storage", cat:"Electronics", price:17999, rating:4.3, reviews:29047, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/r/g/v/-resized-original-imahbzrrxtsbwggz.jpeg?q=90", alt:"POCO X7 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"POCO X7 5G with 8 GB RAM and 128 GB storage. ₹17,999 checked on Shopsy; Flipkart listing also live — price shown there.", hl:["8 GB RAM · 128 GB storage", "₹17,999 checked on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["poco x7", "poco 5g phone", "5g smartphone under 20000"], offers:{flipkart:17999, shopsy:17999}, checkedISO:"2026-11-12T09:54:00+05:30", checkedLabel:"12 Nov, 9:54 AM"},
-    {id:5, name:"Redmi Note 14 5G", sub:"Smartphone · 8 GB RAM · 128 GB storage", cat:"Electronics", price:14799, rating:4.2, reviews:4821, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/i/6/6/note-14-5g-24094rad4i-mzb0icqin-redmi-resized-original-imah9gtuwqmwzxwm.jpeg?q=90", alt:"Redmi Note 14 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Redmi Note 14 5G with 8 GB RAM and 128 GB storage. Same phone checked at ₹14,799 on Shopsy and ₹20,999 on JioMart — a ₹6,200 gap. Flipkart listing also live.", hl:["8 GB RAM · 128 GB storage", "₹14,799 on Shopsy — lowest checked", "₹20,999 on JioMart — compare before you buy"], tags:["redmi note 14", "redmi 5g phone", "note 14 5g"], offers:{flipkart:14799, shopsy:14799, jiomart:20999}, checkedISO:"2026-11-12T09:54:00+05:30", checkedLabel:"12 Nov, 9:54 AM"},
-    {id:6, name:"Samsung Galaxy A36 5G", sub:"Smartphone · 8 GB RAM · 256 GB storage", cat:"Electronics", price:27999, rating:4.4, reviews:20460, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/v/q/g/-original-imahrjshzbzbbfw9.jpeg?q=90", alt:"Samsung Galaxy A36 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Samsung Galaxy A36 5G with 8 GB RAM and 256 GB storage. ₹27,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["8 GB RAM · 256 GB storage", "₹27,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["galaxy a36", "samsung 5g phone", "samsung a series"], offers:{flipkart:27999, shopsy:27999}, checkedISO:"2026-11-12T09:54:00+05:30", checkedLabel:"12 Nov, 9:54 AM"}
+    {id:1, name:"POCO M7 Pro 5G", sub:"Smartphone · 6 GB RAM · 128 GB storage", cat:"Electronics", price:14999, rating:4.3, reviews:38576, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/h/g/z/-resized-original-imah7jsp8bh3s4rv.jpeg?q=90", alt:"POCO M7 Pro 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"POCO M7 Pro 5G with 6 GB RAM and 128 GB storage. ₹14,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["6 GB RAM · 128 GB storage", "₹14,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["poco m7 pro", "poco 5g phone", "5g smartphone under 15000"], offers:{flipkart:14999, shopsy:14999}, checkedISO:"2026-11-13T10:06:00+05:30", checkedLabel:"13 Nov, 10:06 AM"},
+    {id:2, name:"Samsung Galaxy F16 5G", sub:"Smartphone · 6 GB RAM · 128 GB storage", cat:"Electronics", price:13999, rating:4.2, reviews:10418, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/g/d/p/-resized-original-imahcre2gqhfqgd8.jpeg?q=90", alt:"Samsung Galaxy F16 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Samsung Galaxy F16 5G with 6 GB RAM and 128 GB storage. ₹13,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["6 GB RAM · 128 GB storage", "₹13,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["galaxy f16", "samsung 5g phone", "5g smartphone under 15000"], offers:{flipkart:13999, shopsy:13999}, checkedISO:"2026-11-13T10:06:00+05:30", checkedLabel:"13 Nov, 10:06 AM"},
+    {id:3, name:"Realme P3x 5G", sub:"Smartphone · 6 GB RAM · 128 GB storage", cat:"Electronics", price:12999, rating:4.3, reviews:60167, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/j/n/1/-resized-original-imah9gtmya9qhqse.jpeg?q=90", alt:"Realme P3x 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Realme P3x 5G with 6 GB RAM and 128 GB storage. ₹12,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["6 GB RAM · 128 GB storage", "₹12,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["realme p3x", "realme 5g phone", "5g smartphone under 15000"], offers:{flipkart:12999, shopsy:12999}, checkedISO:"2026-11-13T10:06:00+05:30", checkedLabel:"13 Nov, 10:06 AM"},
+    {id:4, name:"POCO X7 5G", sub:"Smartphone · 8 GB RAM · 128 GB storage", cat:"Electronics", price:17999, rating:4.3, reviews:29047, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/r/g/v/-resized-original-imahbzrrxtsbwggz.jpeg?q=90", alt:"POCO X7 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"POCO X7 5G with 8 GB RAM and 128 GB storage. ₹17,999 checked on Shopsy; Flipkart listing also live — price shown there.", hl:["8 GB RAM · 128 GB storage", "₹17,999 checked on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["poco x7", "poco 5g phone", "5g smartphone under 20000"], offers:{flipkart:17999, shopsy:17999}, checkedISO:"2026-11-13T10:06:00+05:30", checkedLabel:"13 Nov, 10:06 AM"},
+    {id:5, name:"Redmi Note 14 5G", sub:"Smartphone · 8 GB RAM · 128 GB storage", cat:"Electronics", price:14799, rating:4.2, reviews:4821, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/i/6/6/note-14-5g-24094rad4i-mzb0icqin-redmi-resized-original-imah9gtuwqmwzxwm.jpeg?q=90", alt:"Redmi Note 14 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Redmi Note 14 5G with 8 GB RAM and 128 GB storage. Same phone checked at ₹14,799 on Shopsy and ₹20,999 on JioMart — a ₹6,200 gap. Flipkart listing also live.", hl:["8 GB RAM · 128 GB storage", "₹14,799 on Shopsy — lowest checked", "₹20,999 on JioMart — compare before you buy"], tags:["redmi note 14", "redmi 5g phone", "note 14 5g"], offers:{flipkart:14799, shopsy:14799, jiomart:20999}, checkedISO:"2026-11-13T10:06:00+05:30", checkedLabel:"13 Nov, 10:06 AM"},
+    {id:6, name:"Samsung Galaxy A36 5G", sub:"Smartphone · 8 GB RAM · 256 GB storage", cat:"Electronics", price:27999, rating:4.4, reviews:20460, img:"https://rukminim1.flixcart.com/image/800/1070/xif0q/mobile/v/q/g/-original-imahrjshzbzbbfw9.jpeg?q=90", alt:"Samsung Galaxy A36 5G smartphone", deal:false, badge:"", fast:"Delivery details on the store", desc:"Samsung Galaxy A36 5G with 8 GB RAM and 256 GB storage. ₹27,999 in stock on Shopsy; Flipkart listing also live — price shown there.", hl:["8 GB RAM · 256 GB storage", "₹27,999 in stock on Shopsy", "Flipkart listing live — price shown on Flipkart"], tags:["galaxy a36", "samsung 5g phone", "samsung a series"], offers:{flipkart:27999, shopsy:27999}, checkedISO:"2026-11-13T10:06:00+05:30", checkedLabel:"13 Nov, 10:06 AM"}
   ];
 
   /* ================================================================
@@ -2570,7 +2591,6 @@
   var cart = {};      // id -> qty (in-memory only, per session)
   var wishlist = {};  // id -> true
   var currentModalId = null;
-  var modalQty = 1;
 
   function $(id){ return document.getElementById(id); }
   function inr(n){ return "₹" + n.toLocaleString("en-IN"); }
@@ -2689,13 +2709,8 @@
       items.forEach(function(it){
         var row=document.createElement("div"); row.className="ci";
         row.innerHTML='<img src="'+it.p.img+'" alt="'+it.p.alt+'" />' +
-          '<div><h4>'+it.p.name+'</h4><span class="unit">'+inr(it.p.price)+' each</span><br /><span class="p">'+inr(it.p.price*it.qty)+'</span>' +
-          '<div class="qty"><button type="button" data-act="dec" aria-label="Decrease quantity">−</button><span>'+it.qty+'</span><button type="button" data-act="inc" aria-label="Increase quantity">+</button></div></div>' +
+          '<div><h4>'+it.p.name+'</h4><span class="unit">Best price</span><br /><span class="p">'+inr(it.p.price)+'</span></div>' +
           '<button class="rm" type="button">Remove</button>';
-        row.querySelector('[data-act="inc"]').addEventListener("click", function(){ cart[it.p.id]++; renderCart(); render(); });
-        row.querySelector('[data-act="dec"]').addEventListener("click", function(){
-          cart[it.p.id]--; if(cart[it.p.id]<=0) delete cart[it.p.id]; renderCart(); render();
-        });
         row.querySelector(".rm").addEventListener("click", function(){ delete cart[it.p.id]; renderCart(); render(); });
         box.appendChild(row);
       });
@@ -2724,7 +2739,7 @@
   function closeDrawer(){ var d=$("drawer"); d.classList.remove("show"); d.setAttribute("aria-hidden","true"); $("scrim").classList.remove("show"); clearTimeout(drawerHideTimer); drawerHideTimer=setTimeout(function(){ if(!d.classList.contains("show")) d.classList.remove("open"); }, 340); }
 
   function openProduct(id){
-    var p=byId(id); if(!p) return; currentModalId=id; modalQty=1;
+    var p=byId(id); if(!p) return; currentModalId=id;
     $("pmImg").src=p.img; $("pmImg").alt=p.alt;
     $("pmTitle").textContent=p.name;
     $("pmSub").textContent=p.sub+" · "+p.cat;
@@ -2732,7 +2747,6 @@
     $("pmDesc").textContent=p.desc;
     var hl=$("pmHighlights"); hl.innerHTML="";
     p.hl.forEach(function(h){ var li=document.createElement("li"); li.innerHTML=CHECK+"<span>"+h+"</span>"; hl.appendChild(li); });
-    $("pmQty").textContent="1";
     $("pmDelivery").textContent=p.fast+" · Delivery, returns and warranty follow the store you buy from";
     renderCompare($("pmCompare"), p);
     syncPmWish();
@@ -2899,10 +2913,8 @@
   $("policyClose").addEventListener("click", function(){ $("policyModal").classList.remove("show"); });
   $("policyModal").addEventListener("click", function(e){ if(e.target===this) this.classList.remove("show"); });
   $("productModal").addEventListener("click", function(e){ if(e.target===this) closeProduct(); });
-  $("pmInc").addEventListener("click", function(){ modalQty=Math.min(10, modalQty+1); $("pmQty").textContent=modalQty; });
-  $("pmDec").addEventListener("click", function(){ modalQty=Math.max(1, modalQty-1); $("pmQty").textContent=modalQty; });
   $("pmAdd").addEventListener("click", function(){
-    if(currentModalId){ cart[currentModalId]=(cart[currentModalId]||0)+modalQty; renderCart(); render(); toast("Saved to your shortlist"); closeProduct(); openDrawer(); }
+    if(currentModalId){ cart[currentModalId]=1; renderCart(); render(); toast("Saved to your shortlist"); closeProduct(); openDrawer(); }
   });
   $("pmWish").addEventListener("click", function(){
     if(!currentModalId) return;
@@ -2940,7 +2952,7 @@
   window.__YK = { PRODUCTS:PRODUCTS, STORES:STORES, STORE_LINKS:STORE_LINKS, offersFor:offersFor, bestOffer:bestOffer, compareEntries:compareEntries, freshBest:freshBest, renderCompare:renderCompare, byId:byId, inr:inr, offPct:offPct, compareBtnLabel:compareBtnLabel, stars:stars, openProduct:openProduct, openStoreLink:openStoreLink,
     toggleWishlist:function(id){ if(wishlist[id]){ delete wishlist[id]; return false; } wishlist[id]=true; return true; },
     getWishlist:function(){ return wishlist; }, getCart:function(){ return cart; }, cartList:cartList,
-    addToShortlist:function(id,qty){ cart[id]=(cart[id]||0)+(qty||1); renderCart(); render(); toast("Saved to your shortlist"); },
+    addToShortlist:function(id,qty){ cart[id]=1; renderCart(); render(); toast("Saved to your shortlist"); },
     storeByKey:storeByKey };
 })();
 </script>
@@ -3231,7 +3243,7 @@
     if(items.length){ var t=document.createElement("p"); t.className="saving-line"; t.textContent="Total at best prices: "+YK.inr(total)+" · Confirm the live price on each store before paying."; box.appendChild(t); }
     document.getElementById("shortlistEmpty").classList.toggle("show", items.length===0);
   }
-  var ROUTES={shop:"page-shop",deals:"page-deals",stores:"page-stores","store-detail":"page-store-detail",categories:"page-categories",category:"page-category",product:"page-product",blog:"page-blog",about:"page-about",how:"page-how",faq:"page-faq",contact:"page-contact",wishlist:"page-wishlist",shortlist:"page-shortlist",privacy:"page-privacy",terms:"page-terms",disclosure:"page-disclosure",cookies:"page-cookies",returns:"page-returns",disclaimer:"page-disclaimer",sitemap:"page-sitemap"};
+  var ROUTES={shop:"page-shop",deals:"page-deals",stores:"page-stores","store-detail":"page-store-detail",categories:"page-categories",category:"page-category",product:"page-product",blog:"page-blog",about:"page-about",how:"page-how",faq:"page-faq",contact:"page-contact",wishlist:"page-wishlist",shortlist:"page-shortlist",privacy:"page-privacy",terms:"page-terms",disclosure:"page-disclosure",cookies:"page-cookies",returns:"page-returns",disclaimer:"page-disclaimer",sitemap:"page-sitemap",notfound:"page-notfound"};
   function showHome(){
     wrap.classList.remove("show");
     homeKids.forEach(function(el){ el.style.display=""; });
@@ -3259,6 +3271,7 @@
     for(var i=0;i<links.length;i++) links[i].classList.toggle("on", links[i].getAttribute("data-nav")===route || (route==="how"&&links[i].getAttribute("data-nav")==="how"));
   }
   function route(){
+    state.query=""; var si=document.getElementById("searchInput"); if(si) si.value="";
     var h=location.hash||"";
     if(h.indexOf("#/")!==0){ showHome(); return; }
     var parts=h.slice(2).split("/"); var head=parts[0];
@@ -3276,8 +3289,10 @@
     else if(head==="contact") showPage("contact");
     else if(head==="wishlist") showPage("wishlist");
     else if(head==="shortlist") showPage("shortlist");
+    else if(head==="how-we-check-prices") showPage("how");
+    else if(head==="affiliate-disclosure") showPage("disclosure");
     else if(ROUTES[head]) showPage(head);
-    else showHome();
+    else showPage("notfound");
   }
   window.addEventListener("hashchange", route);
   var ss=document.getElementById("shopSort"); if(ss) ss.addEventListener("change", renderShop);
