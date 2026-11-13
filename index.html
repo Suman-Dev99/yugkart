@@ -3271,7 +3271,12 @@
     for(var i=0;i<links.length;i++) links[i].classList.toggle("on", links[i].getAttribute("data-nav")===route || (route==="how"&&links[i].getAttribute("data-nav")==="how"));
   }
   function route(){
-    state.query=""; var si=document.getElementById("searchInput"); if(si) si.value="";
+    /* Clear the header search on navigation. NOTE: `state` lives in the
+       first script block and is not visible here — clear the input and
+       dispatch an input event so that block's own listener clears the
+       filter. Referencing `state` directly here throws and kills routing. */
+    var si=document.getElementById("searchInput");
+    if(si && si.value){ si.value=""; si.dispatchEvent(new Event("input", {bubbles:true})); }
     var h=location.hash||"";
     if(h.indexOf("#/")!==0){ showHome(); return; }
     var parts=h.slice(2).split("/"); var head=parts[0];
