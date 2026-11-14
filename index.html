@@ -300,8 +300,8 @@
   .order-ok code{background:var(--surface2);padding:.2rem .6rem;border-radius:6px;font-weight:700}
 
   .toast{position:fixed;left:50%;bottom:1.2rem;transform:translate(-50%,140%);background:var(--ink);color:var(--bg);padding:.75rem 1.2rem;border-radius:999px;font-weight:600;font-size:.92rem;z-index:120;transition:transform .25s ease;box-shadow:var(--shadow);max-width:92vw;text-align:center}
-  .cookie-bar{position:fixed;left:50%;bottom:1rem;transform:translate(-50%,160%);background:#131315;color:#fff;padding:.7rem .7rem .7rem 1rem;border-radius:14px;font-size:.88rem;font-weight:600;line-height:1.45;z-index:130;transition:transform .25s ease;box-shadow:var(--shadow);max-width:94vw;width:max-content;display:flex;gap:.8rem;align-items:center}
-  .cookie-bar.show{transform:translate(-50%,0)}
+  .cookie-bar{position:fixed;left:50%;bottom:1rem;visibility:hidden;transform:translate(-50%,160%);background:#131315;color:#fff;padding:.7rem .7rem .7rem 1rem;border-radius:14px;font-size:.88rem;font-weight:600;line-height:1.45;z-index:130;transition:transform .25s ease;box-shadow:var(--shadow);max-width:94vw;width:max-content;display:flex;gap:.8rem;align-items:center}
+  .cookie-bar.show{transform:translate(-50%,0);visibility:visible}
   .cookie-bar a{color:#ffd9ae}
   .cookie-bar button{background:#f59e0b;color:#111827;border:0;border-radius:999px;padding:.45rem .95rem;font-weight:800;font-size:.88rem;cursor:pointer;white-space:nowrap}
   .toast.show{transform:translate(-50%,0)}
@@ -1570,7 +1570,10 @@
   .modal{background:rgba(15,23,42,.55)}
   .modal .box{border-radius:var(--r-card);box-shadow:var(--shadow-hover)}
   .modal .pic img{object-fit:contain;background:#fff;padding:16px;height:auto;max-height:360px;animation:ykPhotoIn .2s var(--ease) both}
-  #pmStars,#productModal .price,#pmEmi{display:none}
+  /* v3.4.1: was `#productModal .price` — that hid the compare-box prices too
+     (.cbox-price.price), so no store box showed its figure. Only the modal's
+     own header price row (direct .box child) stays hidden. */
+  #pmStars,#productModal .box > .price,#pmEmi{display:none}
   .modal.show .box{animation:ykHeroIn .28s var(--ease) both}
   .drawer{box-shadow:var(--shadow-hover)}
   .drawer header{border-bottom:1px solid var(--border)}
@@ -3372,7 +3375,9 @@
      if a sub-page is open, return home first (capture phase, before the
      catalogue's own handlers run). */
   document.addEventListener("click",function(e){ var chip=e.target.closest?e.target.closest("#catBar .chip[data-cat]"):null; if(chip && wrap.classList.contains("show")){ showHome(); if(location.hash.indexOf("#/")===0) history.replaceState(null,"",location.pathname+location.search); } },true);
-  document.addEventListener("submit",function(e){ if(e.target && e.target.id==="searchForm" && wrap.classList.contains("show")){ showHome(); if(location.hash.indexOf("#/")===0) history.replaceState(null,"",location.pathname+location.search); } },true);
+  /* v3.4.1: search submit no longer forces home from #/shop — the Shop grid
+     filters in place (see the form handler). Other sub-pages still return home. */
+  document.addEventListener("submit",function(e){ if(e.target && e.target.id==="searchForm" && wrap.classList.contains("show")){ var sp=document.getElementById("page-shop"); if(sp && sp.classList.contains("active")) return; showHome(); if(location.hash.indexOf("#/")===0) history.replaceState(null,"",location.pathname+location.search); } },true);
   route();
 })();
 </script>
